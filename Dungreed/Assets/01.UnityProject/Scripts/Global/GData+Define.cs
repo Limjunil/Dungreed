@@ -6,7 +6,10 @@ public static partial class GData
 {
     public const string SCENE_NAME_TITLE = "01.TitleScene";
 
-    public const string SCENE_NAME_LOAD = "02.LoadScene";
+    // public const string SCENE_NAME_LOAD = "02.LoadScene";
+
+    public const string SCENE_NAME_TOWN = "02.TownScene";
+
 
     public const string SCENE_NAME_PLAY = "03.PlayScene";
 

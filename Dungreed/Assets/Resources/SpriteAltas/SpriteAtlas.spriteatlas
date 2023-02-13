@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SpriteAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 8e18fc4904ceaf7409bb189f231044c2, type: 3}
+    - {fileID: 102900000, guid: d1cc6d03a8d01554ca737359e3fe43c5, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 99d8a040b3cc6cb4e9acec7c99551550, type: 3}
+  - {fileID: 21300000, guid: dc8929802ed01914cb1bf0f88af356e2, type: 3}
+  - {fileID: 21300000, guid: 1e1a03f0799613a43a85060b0aecae87, type: 3}
+  - {fileID: 21300000, guid: c2433c619c9ec4e439f50798907a744a, type: 3}
+  - {fileID: 21300000, guid: 899bf63276929264e96a0b74bec6198f, type: 3}
+  - {fileID: 21300000, guid: 0ca95bd2e7b089c4c91781e0f804d253, type: 3}
+  - {fileID: 21300000, guid: fd8110c3194fd5241b8318cd42f25f14, type: 3}
+  - {fileID: 21300000, guid: f29d0fa4060be3b4f8eceec08378de04, type: 3}
+  - {fileID: 21300000, guid: 1a248ad457352e648b2a94afa8c7cee5, type: 3}
+  - {fileID: 21300000, guid: e3035da50b2db1747aabb54c0c338627, type: 3}
+  - {fileID: 21300000, guid: aada1b082453af24183bd2b3e0a910c9, type: 3}
+  - {fileID: 21300000, guid: 1cb0f5c85ef77394aa933cf8543ff624, type: 3}
+  - {fileID: 21300000, guid: 6ab241093be624a459c0154bb5b2814e, type: 3}
+  - {fileID: 21300000, guid: 260dbf69f4a5b584fbb700a716bff9b3, type: 3}
+  - {fileID: 21300000, guid: 7f43a5f9f2b05e845a3169402d2b33ef, type: 3}
+  - {fileID: 21300000, guid: 65cea19c13576c649b14bc550e4d7db2, type: 3}
+  - {fileID: 21300000, guid: d2c14e9d95ecfe14fb4c569f96ee9834, type: 3}
+  - {fileID: 21300000, guid: 4b1e0dfd2f49aa3489ac25d742c83bdb, type: 3}
+  - {fileID: 21300000, guid: df9510ae57b077d409862339065b2857, type: 3}
+  - {fileID: 21300000, guid: 1463cfee225e1cb41902f74d5731f1c6, type: 3}
+  - {fileID: 21300000, guid: b30c578f26de62b4db5dcff2103421af, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - CharIdle0 #224949
+  - CharWalk1 #223794
+  - CharRun1 #225331
+  - CharRun6 #225184
+  - CharRun0 #224630
+  - FrontCloud
+  - BackCloud
+  - MainLogo
+  - CharIdle2 #219368
+  - CharRun7 #225023
+  - CharHand
+  - CharIdle1
+  - CharRun5 #221656
+  - CharDie #225944
+  - MidCloud0
+  - CharIdle4 #223524
+  - CharRun2 #225029
+  - CharIdle3 #220145
+  - CharRun3 #224041
+  - CharRun4 #222502
+  - CharJump0 #221428
+  m_RenderDataMap: {}
+  m_Tag: SpriteAtlas
+  m_IsVariant: 0
