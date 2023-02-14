@@ -39,49 +39,49 @@ SpriteAtlas:
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
-  - {fileID: 21300000, guid: 99d8a040b3cc6cb4e9acec7c99551550, type: 3}
-  - {fileID: 21300000, guid: dc8929802ed01914cb1bf0f88af356e2, type: 3}
-  - {fileID: 21300000, guid: 1e1a03f0799613a43a85060b0aecae87, type: 3}
-  - {fileID: 21300000, guid: c2433c619c9ec4e439f50798907a744a, type: 3}
-  - {fileID: 21300000, guid: 899bf63276929264e96a0b74bec6198f, type: 3}
+  - {fileID: 21300000, guid: 06889820010b3dd4db0f6c9f5f5d8681, type: 3}
+  - {fileID: 21300000, guid: f45f91600648c404a91e2fadc8fbb149, type: 3}
+  - {fileID: 21300000, guid: 33825852a41bd8c44a884a1e9958fb16, type: 3}
   - {fileID: 21300000, guid: 0ca95bd2e7b089c4c91781e0f804d253, type: 3}
   - {fileID: 21300000, guid: fd8110c3194fd5241b8318cd42f25f14, type: 3}
+  - {fileID: 21300000, guid: ff0feaf31071c5343944a829fab3906a, type: 3}
+  - {fileID: 21300000, guid: 437d0784e0f725e4698d2a92c4cde61f, type: 3}
   - {fileID: 21300000, guid: f29d0fa4060be3b4f8eceec08378de04, type: 3}
-  - {fileID: 21300000, guid: 1a248ad457352e648b2a94afa8c7cee5, type: 3}
-  - {fileID: 21300000, guid: e3035da50b2db1747aabb54c0c338627, type: 3}
-  - {fileID: 21300000, guid: aada1b082453af24183bd2b3e0a910c9, type: 3}
-  - {fileID: 21300000, guid: 1cb0f5c85ef77394aa933cf8543ff624, type: 3}
-  - {fileID: 21300000, guid: 6ab241093be624a459c0154bb5b2814e, type: 3}
-  - {fileID: 21300000, guid: 260dbf69f4a5b584fbb700a716bff9b3, type: 3}
+  - {fileID: 21300000, guid: 95e1c9d4850b8454ba661989cf930496, type: 3}
+  - {fileID: 21300000, guid: 5e5213e4a383b06468ccd862d6e66a9f, type: 3}
+  - {fileID: 21300000, guid: e1a8c6a55c16a374685e00c86f528b51, type: 3}
+  - {fileID: 21300000, guid: fe403a261a1bc2945a3ecade24dc289c, type: 3}
+  - {fileID: 21300000, guid: 1573f957f0b4f6b4dbe87ce3ba0d6709, type: 3}
+  - {fileID: 21300000, guid: b976f6b76c63b24499a6e249c8f8b230, type: 3}
+  - {fileID: 21300000, guid: 7ab868288e33090408b8ab52bf9666a2, type: 3}
+  - {fileID: 21300000, guid: a075dac920c8fd5449594c78d6aa7e00, type: 3}
   - {fileID: 21300000, guid: 7f43a5f9f2b05e845a3169402d2b33ef, type: 3}
-  - {fileID: 21300000, guid: 65cea19c13576c649b14bc550e4d7db2, type: 3}
-  - {fileID: 21300000, guid: d2c14e9d95ecfe14fb4c569f96ee9834, type: 3}
-  - {fileID: 21300000, guid: 4b1e0dfd2f49aa3489ac25d742c83bdb, type: 3}
-  - {fileID: 21300000, guid: df9510ae57b077d409862339065b2857, type: 3}
-  - {fileID: 21300000, guid: 1463cfee225e1cb41902f74d5731f1c6, type: 3}
-  - {fileID: 21300000, guid: b30c578f26de62b4db5dcff2103421af, type: 3}
+  - {fileID: 21300000, guid: 370a403b9a550b94e8f1e7152eeed034, type: 3}
+  - {fileID: 21300000, guid: 5c3209dc2a617264ca3a05cac29b874e, type: 3}
+  - {fileID: 21300000, guid: 581c557d4341f7e46a349de06fa28c59, type: 3}
+  - {fileID: 21300000, guid: 9f1547ff49ee8bc439d39e8032bee986, type: 3}
   m_PackedSpriteNamesToIndex:
-  - CharIdle0 #224949
-  - CharWalk1 #223794
-  - CharRun1 #225331
-  - CharRun6 #225184
-  - CharRun0 #224630
+  - CharRun0 %23224630_waifu2x_art_noise1_scale
+  - CharRun2 %23225029_waifu2x_art_noise1_scale
+  - CharWalk1 %23223794_waifu2x_art_noise1_scale
   - FrontCloud
   - BackCloud
+  - CharRun6 %23225184_waifu2x_art_noise1_scale
+  - CharRun4 %23222502_waifu2x_art_noise1_scale
   - MainLogo
-  - CharIdle2 #219368
-  - CharRun7 #225023
-  - CharHand
-  - CharIdle1
-  - CharRun5 #221656
-  - CharDie #225944
+  - CharJump0 %23221428_waifu2x_art_noise1_scale
+  - CharIdle1_waifu2x_art_noise1_scale
+  - CharIdle0 %23224949_waifu2x_art_noise1_scale
+  - CharDie #225944_waifu2x_art_noise1_scale
+  - CharRun7 %23225023_waifu2x_art_noise1_scale
+  - CharIdle4 %23223524_waifu2x_art_noise1_scale
+  - CharIdle3 #220145_waifu2x_art_noise1_scale
+  - CharRun1 %23225331_waifu2x_art_noise1_scale
   - MidCloud0
-  - CharIdle4 #223524
-  - CharRun2 #225029
-  - CharIdle3 #220145
-  - CharRun3 #224041
-  - CharRun4 #222502
-  - CharJump0 #221428
+  - CharRun3 %23224041_waifu2x_art_noise1_scale
+  - CharRun5 %23221656_waifu2x_art_noise1_scale
+  - CharHand_waifu2x_art_noise1_scale
+  - CharIdle2 %23219368_waifu2x_art_noise1_scale
   m_RenderDataMap: {}
   m_Tag: SpriteAtlas
   m_IsVariant: 0

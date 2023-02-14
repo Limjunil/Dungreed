@@ -12,6 +12,9 @@ public class Movement2D : MonoBehaviour
 
 
     private Rigidbody2D playerRigid = default;
+    private Animator animator = default;
+
+
 
     [HideInInspector]
     public bool isLongJump = false;
@@ -41,6 +44,8 @@ public class Movement2D : MonoBehaviour
 
         playerRigid = gameObject.GetComponentMust<Rigidbody2D>();
 
+        animator = gameObject.GetComponentMust<Animator>();
+
         playerCollider = gameObject.GetComponent<BoxCollider2D>();
     }
 
@@ -67,14 +72,17 @@ public class Movement2D : MonoBehaviour
         // 플레이어 발 위치에 원을 생성하고, 원이 바닥과 닿으면 isGround = true
         isGround = Physics2D.OverlapCircle(playerFootPos, 0.1f, groundLayer);
 
+        
 
-        if(isGround == true && playerRigid.velocity.y <= 0)
+        if (isGround == true && playerRigid.velocity.y <= 0)
         {
             currentJumpCnt = maxJumpCnt;
+            animator.SetBool("Ground", true);
+
         }
 
 
-        if(isLongJump == true && 0 < playerRigid.velocity.y)
+        if (isLongJump == true && 0 < playerRigid.velocity.y)
         {
             playerRigid.gravityScale = 1.0f;
         }
@@ -85,15 +93,22 @@ public class Movement2D : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(playerFootPos, 0.1f);
-    }
 
     public void OnMove(float x)
     {
         playerRigid.velocity = new Vector2(x * playerSpeed, playerRigid.velocity.y);
+
+
+        if(x == 0)
+        {
+            animator.SetBool("Run", false);
+
+        }
+        else
+        {
+            animator.SetBool("Run", true);
+
+        }
     }
 
     public void OnJump()
@@ -101,6 +116,8 @@ public class Movement2D : MonoBehaviour
         if(0 < currentJumpCnt)
         {
             playerRigid.velocity = Vector2.up * jumpForce;
+
+            animator.SetBool("Ground", false);
 
             currentJumpCnt--;
         }

@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             movement2D.OnJump();
+
         }
 
         if (Input.GetKey(KeyCode.Space))
