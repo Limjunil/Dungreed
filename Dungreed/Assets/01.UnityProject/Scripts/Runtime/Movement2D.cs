@@ -33,6 +33,12 @@ public class Movement2D : MonoBehaviour
     // 현재 점프한 횟수
     private int currentJumpCnt = default;
 
+
+    [SerializeField]
+    private int maxDashCnt = default;
+    private int currentDashCnt = default;
+
+
     private void Awake()
     {
         playerSpeed = 5f;
@@ -42,11 +48,15 @@ public class Movement2D : MonoBehaviour
         maxJumpCnt = 2;
         currentJumpCnt = 0;
 
+        maxDashCnt = 3;
+        currentDashCnt = 0;
+
         playerRigid = gameObject.GetComponentMust<Rigidbody2D>();
 
         animator = gameObject.GetComponentMust<Animator>();
 
         playerCollider = gameObject.GetComponent<BoxCollider2D>();
+
     }
 
     // Start is called before the first frame update
@@ -58,7 +68,7 @@ public class Movement2D : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void FixedUpdate()
@@ -96,8 +106,10 @@ public class Movement2D : MonoBehaviour
 
     public void OnMove(float x)
     {
-        playerRigid.velocity = new Vector2(x * playerSpeed, playerRigid.velocity.y);
 
+        
+        playerRigid.velocity = new Vector2(x * playerSpeed, playerRigid.velocity.y);
+       
 
         if(x == 0)
         {
@@ -109,6 +121,7 @@ public class Movement2D : MonoBehaviour
             animator.SetBool("Run", true);
 
         }
+
     }
 
     public void OnJump()
@@ -125,5 +138,15 @@ public class Movement2D : MonoBehaviour
 
     }
 
+    public void OnDash()
+    {
+       
+        Vector2 len = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        // 길이이자 방향이다.
+
+        
+        playerRigid.velocity = len.normalized * 15f;
+
+    }
 
 }

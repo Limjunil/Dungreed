@@ -8,12 +8,13 @@ public class PlayerController : MonoBehaviour
 {
 
     private Movement2D movement2D = default;
+    private bool isDash = false;
 
 
     private void Awake()
     {
         movement2D = gameObject.GetComponentMust<Movement2D>();
-
+        isDash = false;
     }
 
     // Start is called before the first frame update
@@ -28,13 +29,25 @@ public class PlayerController : MonoBehaviour
     {
         float x = Input.GetAxisRaw("Horizontal");
 
-        movement2D.OnMove(x);
+        if (isDash == false)
+        {
+            movement2D.OnMove(x);
+        }
+
+        if (Input.GetMouseButtonDown(1) && !isDash)
+        {
+            isDash = true;
+            movement2D.OnDash();
+
+            StartCoroutine(StayDash());
+        }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
             movement2D.OnJump();
 
         }
+
 
         if (Input.GetKey(KeyCode.Space))
         {
@@ -47,5 +60,9 @@ public class PlayerController : MonoBehaviour
 
     }
 
-
+    IEnumerator StayDash()
+    {
+        yield return new WaitForSeconds(0.1f);
+        isDash = false;
+    }
 }
