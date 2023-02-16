@@ -14,8 +14,6 @@ public class Movement2D : MonoBehaviour
     private Rigidbody2D playerRigid = default;
     private Animator animator = default;
 
-
-
     [HideInInspector]
     public bool isLongJump = false;
 
@@ -49,7 +47,7 @@ public class Movement2D : MonoBehaviour
         currentJumpCnt = 0;
 
         maxDashCnt = 3;
-        currentDashCnt = 0;
+        currentDashCnt = maxDashCnt;
 
         playerRigid = gameObject.GetComponentMust<Rigidbody2D>();
 
@@ -57,12 +55,15 @@ public class Movement2D : MonoBehaviour
 
         playerCollider = gameObject.GetComponent<BoxCollider2D>();
 
+
+
+
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine(ReDashCnt());
     }
 
     // Update is called once per frame
@@ -140,13 +141,38 @@ public class Movement2D : MonoBehaviour
 
     public void OnDash()
     {
-       
-        Vector2 len = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        // 길이이자 방향이다.
+        if (0 < currentDashCnt)
+        {
+            Vector2 len = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            // 길이이자 방향이다.
 
-        
-        playerRigid.velocity = len.normalized * 15f;
 
-    }
+            playerRigid.velocity = len.normalized * 15f;
+
+            currentDashCnt--;
+
+        }
+
+
+    }   // OnDash()
+
+    public IEnumerator ReDashCnt()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(3f);
+
+            if (currentDashCnt == maxDashCnt)
+            {
+                /* Do Nothing */
+            }
+            else
+            {
+                currentDashCnt++;
+
+            }
+        }
+
+    }   // ReDashCnt()
 
 }

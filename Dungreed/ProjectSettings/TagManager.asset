@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Sword
   - Enemy
+  - BatFire
+  - SkelSword
   layers:
   - Default
   - TransparentFX

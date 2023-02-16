@@ -9,12 +9,16 @@ public class BatFireBullet : MonoBehaviour
 
     public float batFireSpeed = default;
 
+    public Animator animator = default;
 
     // Start is called before the first frame update
     void Start()
     {
         batFireRigid = gameObject.GetComponentMust<Rigidbody2D>();
         batFireSpeed = 3f;
+        animator = gameObject.GetComponentMust<Animator>();
+
+        Invoke("OffBullet", 4f);
     }
 
     // Update is called once per frame
@@ -22,5 +26,11 @@ public class BatFireBullet : MonoBehaviour
     {
         batFireRigid.velocity = transform.up * batFireSpeed;
 
+    }
+
+    public void OffBullet()
+    {
+        animator.SetTrigger("EndFire");
+        gameObject.SetActive(false);
     }
 }
