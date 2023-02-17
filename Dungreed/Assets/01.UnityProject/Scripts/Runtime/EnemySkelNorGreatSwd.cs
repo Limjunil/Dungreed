@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class EnemySkelNorGreatSwd : EnemyMoveController
 {
+
     public EnemyObjs enemyObjs = default;
-    public Animator animator = default;
 
     // Start is called before the first frame update
     void Start()
     {
-
         enemyObjs = new SkelNorGreatSwd();
 
         this.enemySpeed = enemyObjs.MonsterSpeed();
@@ -21,19 +20,18 @@ public class EnemySkelNorGreatSwd : EnemyMoveController
 
         this.isFindPlayer = false;
         this.enemyFly = enemyObjs.MonsterCanFly();
-
-        animator = gameObject.GetComponentMust<Animator>();
-
-        
         Invoke("RandomWay", 1f);
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
         OnMoveEnemy();
+
     }
+
 
     public override void RandomWay()
     {
@@ -59,4 +57,5 @@ public class EnemySkelNorGreatSwd : EnemyMoveController
     {
         base.OnFindPlayer();
     }
+
 }
