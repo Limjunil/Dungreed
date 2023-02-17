@@ -18,14 +18,14 @@ TagManager:
   - 
   - 
   - Ground
+  - GroundBg
   - 
   - 
   - 
   - 
   - 
   - 
-  - 
-  - 
+  - Player
   - 
   - 
   - 
@@ -44,4 +44,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 2092455381
+    locked: 0
+  - name: Ground
+    uniqueID: 3940914407
     locked: 0

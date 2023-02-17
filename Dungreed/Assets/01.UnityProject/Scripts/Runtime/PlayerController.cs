@@ -10,11 +10,20 @@ public class PlayerController : MonoBehaviour
     private Movement2D movement2D = default;
     private bool isDash = false;
 
+    public int playerLayer = default;
+    public int groundLayer = default;
+
+    private Rigidbody2D playerRigid = default;
 
     private void Awake()
     {
         movement2D = gameObject.GetComponentMust<Movement2D>();
         isDash = false;
+
+        playerLayer = LayerMask.NameToLayer("Player");
+        groundLayer = LayerMask.NameToLayer("GroundBg");
+        playerRigid = gameObject.GetComponentMust<Rigidbody2D>();
+
     }
 
     // Start is called before the first frame update
@@ -56,6 +65,18 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.Space))
         {
             movement2D.isLongJump = false;
+        }
+
+
+        if(playerRigid.velocity.y > 0 || 
+            (Input.GetKeyDown(KeyCode.S) && Input.GetKeyDown(KeyCode.Space)))
+        {
+            Physics2D.IgnoreLayerCollision(playerLayer, groundLayer, true);
+        }
+        else
+        {
+            Physics2D.IgnoreLayerCollision(playerLayer, groundLayer, false);
+
         }
 
     }

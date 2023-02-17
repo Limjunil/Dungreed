@@ -20,8 +20,14 @@ public class Movement2D : MonoBehaviour
 
     [SerializeField]
     private LayerMask groundLayer;  // 바닥 체크를 위한 충돌 레이어
+    [SerializeField]
+
+    private LayerMask groundBgLayer;  // 바닥 체크를 위한 충돌 레이어
+
     private BoxCollider2D playerCollider; // 플레이어의 충돌 범위
     private bool isGround = false;  // 바닥 체크 / 바닥에 닿으면 true
+    private bool isGroundOne = false;
+    private bool isGroundTwo = false;
     private Vector3 playerFootPos;  // 플레이어 발 위치
 
 
@@ -55,10 +61,11 @@ public class Movement2D : MonoBehaviour
 
         playerCollider = gameObject.GetComponent<BoxCollider2D>();
 
+        isGroundOne = false;
+        isGroundTwo = false;
 
 
-
-    }
+}
 
     // Start is called before the first frame update
     void Start()
@@ -81,9 +88,18 @@ public class Movement2D : MonoBehaviour
         playerFootPos = new Vector2(bounds.center.x, bounds.min.y);
 
         // 플레이어 발 위치에 원을 생성하고, 원이 바닥과 닿으면 isGround = true
-        isGround = Physics2D.OverlapCircle(playerFootPos, 0.1f, groundLayer);
+        isGroundOne = Physics2D.OverlapCircle(playerFootPos, 0.1f, groundLayer);
+        isGroundTwo = Physics2D.OverlapCircle(playerFootPos, 0.1f, groundBgLayer);
 
-        
+        if(isGroundOne == true || isGroundTwo == true)
+        {
+            isGround = true;
+        }
+        else
+        {
+            isGround = false;
+        }
+
 
         if (isGround == true && playerRigid.velocity.y <= 0)
         {
