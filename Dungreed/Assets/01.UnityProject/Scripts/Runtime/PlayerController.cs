@@ -11,17 +11,20 @@ public class PlayerController : MonoBehaviour
     private bool isDash = false;
 
     public int playerLayer = default;
-    public int groundLayer = default;
+    public int groundBgLayer = default;
 
     private Rigidbody2D playerRigid = default;
 
+    public bool isGround = true;
+
     private void Awake()
     {
+        isGround = true;
         movement2D = gameObject.GetComponentMust<Movement2D>();
         isDash = false;
 
         playerLayer = LayerMask.NameToLayer("Player");
-        groundLayer = LayerMask.NameToLayer("GroundBg");
+        groundBgLayer = LayerMask.NameToLayer("GroundBg");
         playerRigid = gameObject.GetComponentMust<Rigidbody2D>();
 
     }
@@ -51,31 +54,45 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(StayDash());
         }
 
+
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            movement2D.OnJump();
+            if (Input.GetKey(KeyCode.S))
+            {
+                isGround = true;
+                playerRigid.velocity = Vector2.down;
+            }
+            else
+            {
+                isGround = false;
+                movement2D.OnJump();
+
+            }
 
         }
 
-
+        
         if (Input.GetKey(KeyCode.Space))
         {
+
             movement2D.isLongJump = true;
         }
         else if (Input.GetKeyUp(KeyCode.Space))
         {
             movement2D.isLongJump = false;
+
         }
 
 
-        if(playerRigid.velocity.y > 0 || 
-            (Input.GetKeyDown(KeyCode.S) && Input.GetKeyDown(KeyCode.Space)))
+        if (isGround == true || 
+            movement2D.isLongJump == true)
         {
-            Physics2D.IgnoreLayerCollision(playerLayer, groundLayer, true);
+            Physics2D.IgnoreLayerCollision(playerLayer, groundBgLayer, true);
         }
         else
         {
-            Physics2D.IgnoreLayerCollision(playerLayer, groundLayer, false);
+            Physics2D.IgnoreLayerCollision(playerLayer, groundBgLayer, false);
 
         }
 
@@ -85,5 +102,13 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         isDash = false;
+    }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("GroundBg"))
+        {
+
+        }
     }
 }

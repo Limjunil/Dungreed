@@ -10,6 +10,8 @@ public class Movement2D : MonoBehaviour
     [SerializeField]
     private float jumpForce = default;
 
+    [SerializeField]
+    private float dashSpeed = default;
 
     private Rigidbody2D playerRigid = default;
     private Animator animator = default;
@@ -48,6 +50,7 @@ public class Movement2D : MonoBehaviour
         playerSpeed = 5f;
         jumpForce = 8f;
         isLongJump = false;
+        dashSpeed = 30f;
 
         maxJumpCnt = 2;
         currentJumpCnt = 0;
@@ -94,6 +97,7 @@ public class Movement2D : MonoBehaviour
         if(isGroundOne == true || isGroundTwo == true)
         {
             isGround = true;
+            animator.SetBool("Ground", true);
         }
         else
         {
@@ -104,7 +108,6 @@ public class Movement2D : MonoBehaviour
         if (isGround == true && playerRigid.velocity.y <= 0)
         {
             currentJumpCnt = maxJumpCnt;
-            animator.SetBool("Ground", true);
 
         }
 
@@ -163,7 +166,7 @@ public class Movement2D : MonoBehaviour
             // 길이이자 방향이다.
 
 
-            playerRigid.velocity = len.normalized * 15f;
+            playerRigid.velocity = len.normalized * dashSpeed;
 
             currentDashCnt--;
 
