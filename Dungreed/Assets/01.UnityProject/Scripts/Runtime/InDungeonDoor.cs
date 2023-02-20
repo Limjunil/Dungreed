@@ -56,7 +56,7 @@ public class InDungeonDoor : MonoBehaviour
             target = GameObject.FindWithTag("Player");
             targetPlayer = target.transform;
 
-            float changeY = targetPlayer.transform.position.y + -0.5f;
+            float changeY = targetPlayer.transform.position.y + -0.6f;
 
             dungeonDoor.transform.position = new Vector2(targetPlayer.transform.position.x, changeY);
 

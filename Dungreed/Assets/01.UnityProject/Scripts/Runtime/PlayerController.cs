@@ -16,14 +16,14 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D playerRigid = default;
 
-    public bool isGround = true;
+    public bool isIgnore = true;
 
     public bool isDungeon = false;
 
     private void Awake()
     {
         isDungeon = false;
-        isGround = true;
+        isIgnore = true;
         movement2D = gameObject.GetComponentMust<Movement2D>();
         isDash = false;
 
@@ -44,8 +44,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        
+              
 
         float x = Input.GetAxisRaw("Horizontal");
 
@@ -62,9 +61,10 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1) && !isDash)
         {
+            isIgnore = true;
             isDash = true;
-            isGround = true;
             movement2D.OnDash();
+            Invoke("OnIsIgnore", 0.5f);
             StartCoroutine(StayDash());
         }
 
@@ -72,17 +72,19 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            isIgnore = true;
+
             if (Input.GetKey(KeyCode.S))
             {
-                isGround = true;
                 playerRigid.velocity = Vector2.down;
             }
             else
             {
-                isGround = false;
                 movement2D.OnJump();
 
             }
+
+            Invoke("OnIsIgnore", 0.5f);
 
         }
 
@@ -99,8 +101,7 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        if (isGround == true || 
-            movement2D.isLongJump == true)
+        if (isIgnore == true)
         {
             Physics2D.IgnoreLayerCollision(playerLayer, groundBgLayer, true);
         }
@@ -114,8 +115,8 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator StayDash()
     {
+        
         yield return new WaitForSeconds(0.6f);
-        isGround = false;
         isDash = false;
 
         GFunc.Log("tlfgod");
@@ -125,7 +126,8 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.collider.CompareTag("Ground"))
         {
-            isGround = true;
+            GFunc.Log("땅에 닿았다");
+            isIgnore = true;
         }
     }
 
@@ -148,7 +150,20 @@ public class PlayerController : MonoBehaviour
     {
         if(collision.tag == "NoZone")
         {
-            isGround = true;
+            isIgnore = true;
+        }
+
+        if (collision.tag == "GroundBg")
+        {
+            if(playerRigid.velocity.y == 0)
+            {
+                isIgnore = true;
+            }
+            else
+            {
+                isIgnore = false;
+                GFunc.Log("트리거에서 호출");
+            }
         }
     }
 
@@ -156,5 +171,10 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(0.4f);
         gameObject.SetActive(false);
+    }
+
+    public void OnIsIgnore()
+    {
+        isIgnore = false;
     }
 }
