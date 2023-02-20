@@ -13,18 +13,23 @@ public class PlayerController : MonoBehaviour
     public int playerLayer = default;
     public int groundBgLayer = default;
 
+
     private Rigidbody2D playerRigid = default;
 
     public bool isGround = true;
 
+    public bool isDungeon = false;
+
     private void Awake()
     {
+        isDungeon = false;
         isGround = true;
         movement2D = gameObject.GetComponentMust<Movement2D>();
         isDash = false;
 
         playerLayer = LayerMask.NameToLayer("Player");
         groundBgLayer = LayerMask.NameToLayer("GroundBg");
+
         playerRigid = gameObject.GetComponentMust<Rigidbody2D>();
 
     }
@@ -39,7 +44,16 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        
+
         float x = Input.GetAxisRaw("Horizontal");
+
+        if (isDungeon == true)
+        {
+            movement2D.OnInDungeon();
+            return;
+        }
 
         if (isDash == false)
         {
@@ -49,8 +63,8 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(1) && !isDash)
         {
             isDash = true;
+            isGround = true;
             movement2D.OnDash();
-
             StartCoroutine(StayDash());
         }
 
@@ -100,15 +114,47 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator StayDash()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.6f);
+        isGround = false;
         isDash = false;
+
+        GFunc.Log("tlfgod");
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("GroundBg"))
+        if (collision.collider.CompareTag("Ground"))
         {
+            isGround = true;
+        }
+    }
+
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Dungeon")
+        {
+            GFunc.Log("던전에 진입합니다.");
+
+            isDungeon = true;
+            playerRigid.velocity = Vector2.zero;
+
+            StartCoroutine(StartDungeon());
 
         }
+    }
+
+    public void OnTriggerStay2D(Collider2D collision)
+    {
+        if(collision.tag == "NoZone")
+        {
+            isGround = true;
+        }
+    }
+
+    IEnumerator StartDungeon()
+    {
+        yield return new WaitForSeconds(0.4f);
+        gameObject.SetActive(false);
     }
 }

@@ -9,6 +9,9 @@ TagManager:
   - BatFire
   - SkelSword
   - GroundBg
+  - Dungeon
+  - Ground
+  - NoZone
   layers:
   - Default
   - TransparentFX

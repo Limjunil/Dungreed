@@ -50,7 +50,7 @@ public class Movement2D : MonoBehaviour
         playerSpeed = 5f;
         jumpForce = 8f;
         isLongJump = false;
-        dashSpeed = 30f;
+        dashSpeed = 20f;
 
         maxJumpCnt = 2;
         currentJumpCnt = 0;
@@ -193,5 +193,13 @@ public class Movement2D : MonoBehaviour
         }
 
     }   // ReDashCnt()
+
+    public void OnInDungeon()
+    {
+        playerRigid.velocity = Vector2.zero;
+
+        animator.SetBool("Run", false);
+        animator.SetBool("Ground", true);
+    }   // OnInDungeon()
 
 }
