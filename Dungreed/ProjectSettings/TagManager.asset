@@ -12,6 +12,7 @@ TagManager:
   - Dungeon
   - Ground
   - NoZone
+  - FirstNoDown
   layers:
   - Default
   - TransparentFX

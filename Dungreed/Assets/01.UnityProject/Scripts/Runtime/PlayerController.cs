@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
             isIgnore = true;
             isDash = true;
             movement2D.OnDash();
-            Invoke("OnIsIgnore", 0.5f);
+            Invoke("OnIsIgnore", 0.4f);
             StartCoroutine(StayDash());
         }
 
@@ -84,7 +84,7 @@ public class PlayerController : MonoBehaviour
 
             }
 
-            Invoke("OnIsIgnore", 0.5f);
+            Invoke("OnIsIgnore", 0.4f);
 
         }
 
@@ -144,6 +144,14 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(StartDungeon());
 
         }
+
+        if (collision.tag == "FirstNoDown")
+        {
+            GFunc.Log("첫 진입 중!");
+            isIgnore = false;
+
+        }
+
     }
 
     public void OnTriggerStay2D(Collider2D collision)
@@ -151,6 +159,7 @@ public class PlayerController : MonoBehaviour
         if(collision.tag == "NoZone")
         {
             isIgnore = true;
+
         }
 
         if (collision.tag == "GroundBg")
@@ -165,7 +174,18 @@ public class PlayerController : MonoBehaviour
                 GFunc.Log("트리거에서 호출");
             }
         }
+
+        if (collision.tag == "FirstNoDown")
+        {
+            GFunc.Log("첫 진입 중!");
+            isIgnore = false;
+
+        }
+
+
     }
+
+
 
     IEnumerator StartDungeon()
     {

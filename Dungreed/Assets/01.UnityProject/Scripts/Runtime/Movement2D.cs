@@ -48,7 +48,7 @@ public class Movement2D : MonoBehaviour
     private void Awake()
     {
         playerSpeed = 5f;
-        jumpForce = 8f;
+        jumpForce = 10f;
         isLongJump = false;
         dashSpeed = 20f;
 

@@ -11,3 +11,4 @@ Make a Dungreed game project
 2023-02-18 / v0.0.7 / Fix BgGround little    
 2023-02-20 / v0.0.8 / Add BgGround move Complete    
 2023-02-20 / v0.0.9 / Add Mini Dungeon and UpScales    
+2023-02-21 / v0.0.10 / Add Tile Map Dungeon and Town    

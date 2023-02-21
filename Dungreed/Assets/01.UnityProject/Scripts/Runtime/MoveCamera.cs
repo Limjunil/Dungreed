@@ -60,15 +60,16 @@ public class MoveCamera : MonoBehaviour
     }
 
 
-    public void SetCameraRange(int dungeonNumer)
+    public void SetCameraRange(string dungeonNumer)
     {
         switch (dungeonNumer)
         {
-            case 0:
+            case "Town":
                 // 마을의 카메라 사이즈
 
                 break;
-            case 1:
+
+            case "DungeonInGrid":
 
                 // 던전 입구의 카메라 사이즈
                 center.x = 5.5f;
@@ -79,7 +80,7 @@ public class MoveCamera : MonoBehaviour
 
                 break;
 
-            case 2:
+            case "Dungeon1Grid":
                 // 던전 1의 카메라 사이즈
                 center.x = 5.5f;
                 center.y = 3f;
@@ -87,6 +88,45 @@ public class MoveCamera : MonoBehaviour
                 size.x = 21f;
                 size.y = 12f;
 
+                break;
+
+            case "Dungeon2Grid":
+                // 던전 2의 카메라 사이즈
+                center.x = 10f;
+                center.y = -1f;
+
+                size.x = 30f;
+                size.y = 18f;
+
+                break;
+
+            case "DungeonBossGateGrid":
+                // 보스방 입장의 카메라 사이즈
+                center.x = 9f;
+                center.y = 6f;
+
+                size.x = 30f;
+                size.y = 17f;
+
+                break;
+
+            case "DungeonBossInGrid":
+                // 스테이지 1 보스방 진입 전 방의 카메라 사이즈
+                center.x = 9f;
+                center.y = 2f;
+
+                size.x = 30f;
+                size.y = 10f;
+
+                break;
+
+            case "DungeonBoss1Grid":
+                // 스테이지 1 보스방의 카메라 사이즈
+                center.x = 10f;
+                center.y = 8f;
+
+                size.x = 30f;
+                size.y = 21f;
                 break;
 
             default:
