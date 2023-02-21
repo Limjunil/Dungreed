@@ -9,7 +9,7 @@ public class SwordBasicBullet : MonoBehaviour
     void Start()
     {
         
-        Invoke("DestroyBullet", 2);
+        Invoke("OffSwordBullet", 1);
     }
 
     // Update is called once per frame
@@ -18,8 +18,8 @@ public class SwordBasicBullet : MonoBehaviour
         
     }
 
-    void DestroyBullet()
+    void OffSwordBullet()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

@@ -6,7 +6,12 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
 
-    public GameObject bullet;
+    public GameObject swordNorbullet;
+
+    public GameObject[] swordAttacks;
+
+    public int swordCnt = default;
+
     public Transform pos;
     public float cooltime;
     public bool isTurning = false;
@@ -21,12 +26,27 @@ public class PlayerAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        swordCnt = 40;
         damagePos = gameObject.FindChildObj("DamagePos");
         weaponPos = gameObject.FindChildObj("WeaponPlay");
         isTurning = false;
 
         GameObject gameObjs = GFunc.GetRootObj("GameObjs");
         playerObj = gameObjs.FindChildObj("Player");
+
+        swordAttacks = new GameObject[swordCnt];
+
+        Vector3 saveBullet_ = new Vector3(-2000f, 0f, 0f);
+
+        for(int i = 0; i < swordAttacks.Length; i++)
+        {
+            swordAttacks[i] = Instantiate(swordNorbullet, saveBullet_,
+                Quaternion.identity, playerObj.transform);
+
+            swordAttacks[i].SetActive(false);
+        }
+
+
     }
 
     // Update is called once per frame
@@ -66,11 +86,34 @@ public class PlayerAttack : MonoBehaviour
 
                 Vector3 bulletPos = damagePos.transform.position;
 
-                GameObject swordBullet = Instantiate(bullet, bulletPos, transform.rotation, gameObject.transform);
+                swordAttacks[swordCnt-1].SetActive(true);
+                swordAttacks[swordCnt-1].transform.position = bulletPos;
+
+                swordAttacks[swordCnt - 1].transform.rotation = transform.rotation;
+
+                if (-1.5f < lookZ && lookZ < 1.5f)
+                {
+                    swordAttacks[swordCnt - 1].transform.Rotate(new Vector3(0, 0, -90f));
+
+                }
+                else
+                {
+                    swordAttacks[swordCnt - 1].transform.Rotate(new Vector3(0, 0, 90f));
+
+                }
+
+                swordCnt--;
 
 
-                swordBullet.transform.Rotate(new Vector3(0, 0, -90));
+                //GameObject swordBullet = Instantiate(bullet, bulletPos, transform.rotation, gameObject.transform);
 
+
+                //swordBullet.transform.Rotate(new Vector3(0, 0, -90));
+
+                if(swordCnt == 1)
+                {
+                    swordCnt = 40;
+                }
 
             }
 
@@ -79,4 +122,6 @@ public class PlayerAttack : MonoBehaviour
 
         curtime -= Time.deltaTime;
     }
+
+
 }
