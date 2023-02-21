@@ -50,6 +50,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 5fa75ee0aa8e2264c9cae1d41114d14c, type: 3}
   - {fileID: 21300000, guid: 7e2f5bf095cc19145b07afbd1a08068e, type: 3}
   - {fileID: 21300000, guid: 7de8eb213eca0184eae7765cc715bafd, type: 3}
+  - {fileID: 21300000, guid: 9d3853418d49041489ed3333af02c362, type: 3}
   - {fileID: 21300000, guid: 861091513b7acbe4895fbaabb6ee50c4, type: 3}
   - {fileID: 21300000, guid: 4d564061efce1924a836897e0ccfa52b, type: 3}
   - {fileID: 21300000, guid: ed29a961561f8124bb3cff3f3dfc5438, type: 3}
@@ -59,6 +60,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 2dcdcad159f32eb4cbe6d98b24f16663, type: 3}
   - {fileID: 21300000, guid: 04ca8f029c2f47d4cb387979fab13404, type: 3}
   - {fileID: 21300000, guid: 8258c912f63829446b07da6fc17df297, type: 3}
+  - {fileID: 21300000, guid: 5c84a322ebfbfb1409a1bab300f96e3b, type: 3}
   - {fileID: 21300000, guid: 33825852a41bd8c44a884a1e9958fb16, type: 3}
   - {fileID: 21300000, guid: de181b62f582d8c4aad4dd09c9787300, type: 3}
   - {fileID: 21300000, guid: 6fe36b824a935064683e3ca79e60fd25, type: 3}
@@ -86,6 +88,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 5914b8f3c184ea04f98ff3920c6f4b2b, type: 3}
   - {fileID: 21300000, guid: ff0feaf31071c5343944a829fab3906a, type: 3}
   - {fileID: 21300000, guid: 3deaf60440fad1846aa155cebbac8367, type: 3}
+  - {fileID: 21300000, guid: d509370430948e7428329d2c416e4e41, type: 3}
   - {fileID: 21300000, guid: 1f0bfe04a8110d24280a644c44ce0cc6, type: 3}
   - {fileID: 21300000, guid: b7e62e247e01c654bbb3732e3a96fa8e, type: 3}
   - {fileID: 21300000, guid: 2e1d73345954b3c4e846d52229a10d6c, type: 3}
@@ -154,6 +157,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: c6f277e8747c39c4885ae2145ec6eea7, type: 3}
   - {fileID: 21300000, guid: e1b337f8e6039f748b2fc8d623946641, type: 3}
   - {fileID: 21300000, guid: 0a6e2219422544d43a3c092c62106365, type: 3}
+  - {fileID: 21300000, guid: c0343a19319e9a14ebbd92c0601a329d, type: 3}
   - {fileID: 21300000, guid: 0da4c729d685acc438d50f21a0be2b69, type: 3}
   - {fileID: 21300000, guid: 14eb324968a76b341b0c1e0ac88f7ac4, type: 3}
   - {fileID: 21300000, guid: f84b91599fc3f6e46ab312519cb849f1, type: 3}
@@ -184,6 +188,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 94498c2b7bf6848459e214a7df2f56a3, type: 3}
   - {fileID: 21300000, guid: 370a403b9a550b94e8f1e7152eeed034, type: 3}
   - {fileID: 21300000, guid: f8e6e34b07d27254ba97f75697e3ffd2, type: 3}
+  - {fileID: 21300000, guid: 7a7a7b5b3cfcea042988905a456ac950, type: 3}
   - {fileID: 21300000, guid: c11fde5bc516ea14f965c61894bc7454, type: 3}
   - {fileID: 21300000, guid: 6999438b2367b884db04ef3019d739e8, type: 3}
   - {fileID: 21300000, guid: e979539b961e2a042972e609c1d8c612, type: 3}
@@ -254,6 +259,7 @@ SpriteAtlas:
   - Door2 #225769_waifu2x_noise1_scale2x
   - WormPassageIdle08_waifu2x_noise1_scale2x
   - BabyBatBulletFX6
+  - Tile_Stair_BottomLeft_waifu2x_noise1_scale2x
   - SecondFloor_OneWay_0
   - Bat_Red0_waifu2x_art_noise1_scale
   - Torch3_waifu2x_noise1_scale2x
@@ -263,6 +269,7 @@ SpriteAtlas:
   - SwingFX00
   - WormPassageIdle00_waifu2x_noise1_scale2x
   - DungeonEat19_waifu2x_noise1_scale2x
+  - Tile_Stair_TopLeft_waifu2x_noise1_scale2x
   - CharWalk1 %23223794_waifu2x_art_noise1_scale
   - Torch0_waifu2x_noise1_scale2x
   - SkelCorpse_0_waifu2x_art_noise1_scale
@@ -290,6 +297,7 @@ SpriteAtlas:
   - SkelIdle_waifu2x_art_noise1_scale
   - CharRun6 %23225184_waifu2x_art_noise1_scale
   - DungeonEat10_waifu2x_noise1_scale2x
+  - Tile_Stair_BottomRight_waifu2x_noise1_scale2x
   - DungeonEat04_waifu2x_noise1_scale2x
   - BabyBatBullet1
   - BasicStone_TopLeft_waifu2x_noise1_scale2x
@@ -358,6 +366,7 @@ SpriteAtlas:
   - DungeonEat08_waifu2x_noise1_scale2x
   - Door1 #222181_waifu2x_noise1_scale2x
   - WormPassageEat00_waifu2x_noise1_scale2x
+  - Wall_Basic_Statue_Bottom_1_waifu2x_noise1_scale2x
   - Wall_Basic_8_waifu2x_noise1_scale2x
   - Torch2 #221266_waifu2x_noise1_scale2x
   - DungeonEat03_waifu2x_noise1_scale2x
@@ -388,6 +397,7 @@ SpriteAtlas:
   - WormPassageIdle07_waifu2x_noise1_scale2x
   - CharRun3 %23224041_waifu2x_art_noise1_scale
   - DirtBasic_Middle_waifu2x_noise1_scale2x
+  - Tile_Stair_TopRight_waifu2x_noise1_scale2x
   - DungeonEat16_waifu2x_noise1_scale2x
   - SecondFloor_OneWay_1
   - Wall_Basic_16_waifu2x_noise1_scale2x

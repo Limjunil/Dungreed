@@ -58,4 +58,39 @@ public class MoveCamera : MonoBehaviour
 
         transform.position = new Vector3(clampX, clampY, -10f);
     }
+
+
+    public void SetCameraRange(int dungeonNumer)
+    {
+        switch (dungeonNumer)
+        {
+            case 0:
+                // 마을의 카메라 사이즈
+
+                break;
+            case 1:
+
+                // 던전 입구의 카메라 사이즈
+                center.x = 5.5f;
+                center.y = 2.5f;
+
+                size.x = 21f;
+                size.y = 10f;
+
+                break;
+
+            case 2:
+                // 던전 1의 카메라 사이즈
+                center.x = 5.5f;
+                center.y = 3f;
+
+                size.x = 21f;
+                size.y = 12f;
+
+                break;
+
+            default:
+                break;
+        }
+    }
 }
