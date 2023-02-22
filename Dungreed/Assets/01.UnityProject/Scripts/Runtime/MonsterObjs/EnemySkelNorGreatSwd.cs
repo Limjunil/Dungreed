@@ -6,11 +6,21 @@ public class EnemySkelNorGreatSwd : EnemyMoveController
 {
 
     public EnemyObjs enemyObjs = default;
+    public Animator skelAnimator = default;
+
+    public MonsterCollider monsterCollider = default;
 
     // Start is called before the first frame update
     void Start()
     {
         enemyObjs = new SkelNorGreatSwd();
+        skelAnimator = gameObject.GetComponentMust<Animator>();
+        isDie = false;
+        monsterCollider = gameObject.GetComponentMust<MonsterCollider>();
+
+
+        this.enemyMaxHp = enemyObjs.MonsterHp();
+        this.enemyCurrentHp = enemyObjs.MonsterHp();
 
         this.enemySpeed = enemyObjs.MonsterSpeed();
         this.changeWay = default;
@@ -20,6 +30,10 @@ public class EnemySkelNorGreatSwd : EnemyMoveController
 
         this.isFindPlayer = false;
         this.enemyFly = enemyObjs.MonsterCanFly();
+
+        GetHpBarComonet();
+
+
         Invoke("RandomWay", 1f);
 
 
@@ -28,6 +42,14 @@ public class EnemySkelNorGreatSwd : EnemyMoveController
     // Update is called once per frame
     void Update()
     {
+
+        if(isDie == true)
+        {
+            return;
+        }
+
+        MonsterHpVal();
+
         OnMoveEnemy();
 
     }
@@ -58,4 +80,27 @@ public class EnemySkelNorGreatSwd : EnemyMoveController
         base.OnFindPlayer();
     }
 
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Sword")
+        {
+            monsterhpBack.transform.localScale = Vector3.one;
+            enemyCurrentHp -= 8;
+
+            if(enemyCurrentHp <= 0)
+            {
+                MonsterDie();
+            }
+
+        }
+    }
+
+    public override void MonsterDie()
+    {
+        base.MonsterDie();
+        
+        skelAnimator.SetTrigger("DieSkel");
+        monsterCollider.SkelDie(true);
+    }
 }

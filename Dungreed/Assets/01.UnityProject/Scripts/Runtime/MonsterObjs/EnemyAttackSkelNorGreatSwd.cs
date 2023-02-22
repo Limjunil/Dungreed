@@ -65,9 +65,7 @@ public class EnemyAttackSkelNorGreatSwd : CreateEnemyBullet
 
                 skelAnimator.SetTrigger("AttackSkel");
 
-
-                Invoke("OffBoxCollider", 5f);
-                Invoke("WaitAttack", 6f);
+                StartCoroutine(OffAttackSkel());
             }
         }
     }
@@ -87,7 +85,18 @@ public class EnemyAttackSkelNorGreatSwd : CreateEnemyBullet
 
     public void WaitAttack()
     {
-        isChkAttack = true;
+        isChkAttack = false;
+    }
+
+    IEnumerator OffAttackSkel()
+    {
+
+        yield return new WaitForSeconds(4f);
+        OffBoxCollider();
+
+        yield return new WaitForSeconds(3f);
+
+        WaitAttack();
     }
 
 

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6528376586871262312}
   - component: {fileID: 6528376586871262313}
   - component: {fileID: 6528376586871262318}
+  - component: {fileID: 214309281901230314}
   m_Layer: 5
   m_Name: BatFire
   m_TagString: BatFire
@@ -38,7 +39,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 207.8, y: -167.8}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6528376586871262314
@@ -133,3 +134,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   batFireSpeed: 0
+  animator: {fileID: 0}
+--- !u!58 &214309281901230314
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6528376586871262316}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 11

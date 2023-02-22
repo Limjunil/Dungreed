@@ -57,7 +57,7 @@ class SkelNorGreatSwd : EnemyObjs
     public SkelNorGreatSwd()
     {
         this.monsterName = "SkelNormalGreatSword";
-        this.monsterHp = 5;
+        this.monsterHp = 20;
         this.monsterDamage = 10;
         this.monsterDefence = 10;
         this.monsterGold = 50;
@@ -71,7 +71,7 @@ class BatRed : EnemyObjs
     public BatRed()
     {
         this.monsterName = "BatRed";
-        this.monsterHp = 5;
+        this.monsterHp = 15;
         this.monsterDamage = 10;
         this.monsterDefence = 10;
         this.monsterGold = 50;

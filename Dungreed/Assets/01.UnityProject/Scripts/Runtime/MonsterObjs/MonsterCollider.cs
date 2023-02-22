@@ -9,10 +9,12 @@ public class MonsterCollider : MonoBehaviour
     private BoxCollider2D monsterCollider = default;
     private Rigidbody2D monsterRigid = default;
 
+    public bool isSkelDie = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        isSkelDie = false;
         monsterCollider = gameObject.GetComponentMust<BoxCollider2D>();
 
         monsterRigid = gameObject.GetComponent<Rigidbody2D>();
@@ -32,23 +34,31 @@ public class MonsterCollider : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
+            if (isSkelDie == true) { return; }
             MonsterFeetOnOff(true);
         }
     }
 
     public void OnTriggerStay2D(Collider2D collision)
     {
+        if (isSkelDie == true) { return; }
+
         MonsterFeetOnOff(collision, true);
+
+        
     }
 
     public void OnTriggerExit2D(Collider2D collision)
     {
+        if (isSkelDie == true) { return; }
+
         MonsterFeetOnOff(collision, false);
     }
 
 
     public void MonsterFeetOnOff(Collider2D collision, bool isOn)
     {
+
         if (collision.tag == "Player")
         {
 
@@ -69,6 +79,13 @@ public class MonsterCollider : MonoBehaviour
         {
             monsterRigid.gravityScale = 1f;
         }
+    }
+
+    public void SkelDie(bool isOn)
+    {
+        MonsterFeetOnOff(isOn);
+
+        isSkelDie = true;
     }
 
 }

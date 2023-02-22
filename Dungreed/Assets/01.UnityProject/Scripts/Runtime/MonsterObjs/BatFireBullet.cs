@@ -18,19 +18,48 @@ public class BatFireBullet : MonoBehaviour
         batFireSpeed = 3f;
         animator = gameObject.GetComponentMust<Animator>();
 
-        Invoke("OffBullet", 4f);
+        batFireRigid.velocity = transform.up * batFireSpeed;
+    }
+    void OnEnable()
+    {
+        StartCoroutine("StartAutoOffBullet");
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        batFireRigid.velocity = transform.up * batFireSpeed;
+        
 
     }
 
-    public void OffBullet()
+
+    public void OnTriggerEnter2D(Collider2D collision)
     {
+        if(collision.tag == "Player")
+        {
+            StopCoroutine("StartAutoOffBullet");
+            StartCoroutine(OffBullet());
+        }
+    }
+
+    IEnumerator StartAutoOffBullet()
+    {
+        yield return new WaitForSeconds(4f);
+        
+        StartCoroutine(OffBullet());
+
+    }
+
+
+    IEnumerator OffBullet()
+    {
+        batFireRigid.velocity = Vector2.zero;
+
         animator.SetTrigger("EndFire");
+        GFunc.Log("실행됨");
+        yield return new WaitForSeconds(0.7f);
+
         gameObject.SetActive(false);
     }
 }

@@ -60,7 +60,7 @@ public class PlayerAttack : MonoBehaviour
         for(int i = 0; i < swordAttacks.Length; i++)
         {
             swordAttacks[i] = Instantiate(swordNorbullet, saveBullet_,
-                Quaternion.identity, playerObj.transform);
+                Quaternion.identity, gameObjs.transform);
 
             swordAttacks[i].SetActive(false);
         }
@@ -80,7 +80,6 @@ public class PlayerAttack : MonoBehaviour
 
         float z = lookZ * Mathf.Rad2Deg;
 
-        GFunc.Log($"{lookZ} 마우스 위치");
 
 
         transform.rotation = Quaternion.Euler(0, 0, z);
@@ -130,17 +129,20 @@ public class PlayerAttack : MonoBehaviour
 
                 swordAttacks[swordCnt - 1].transform.rotation = transform.rotation;
 
-                if (-1.5f < lookZ && lookZ < 1.5f)
-                {
-                    swordAttacks[swordCnt - 1].transform.Rotate(new Vector3(0, 0, -90f));
+
+                swordAttacks[swordCnt - 1].transform.Rotate(new Vector3(0, 0, -90f));
+
+                //if (-1.5f < lookZ && lookZ < 1.5f)
+                //{
+                //    swordAttacks[swordCnt - 1].transform.Rotate(new Vector3(0, 0, -90f));
                     
-                }
-                else
-                {
+                //}
+                //else
+                //{
 
-                    swordAttacks[swordCnt - 1].transform.Rotate(new Vector3(0, 0, 90f));
+                //    swordAttacks[swordCnt - 1].transform.Rotate(new Vector3(0, 0, 90f));
 
-                }
+                //}
 
                 swordCnt--;
 

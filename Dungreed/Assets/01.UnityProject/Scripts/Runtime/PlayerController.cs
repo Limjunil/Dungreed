@@ -152,6 +152,16 @@ public class PlayerController : MonoBehaviour
 
         }
 
+        if(collision.tag == "SkelSword")
+        {
+            GFunc.Log("해골에게 공격 받았다!");
+        }
+
+        if(collision.tag == "BatFire")
+        {
+            GFunc.Log("박쥐에게 공격 받았다!");
+        }
+
     }
 
     public void OnTriggerStay2D(Collider2D collision)
