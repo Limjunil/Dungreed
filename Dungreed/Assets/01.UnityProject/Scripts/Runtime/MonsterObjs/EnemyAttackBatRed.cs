@@ -8,9 +8,12 @@ public class EnemyAttackBatRed : CreateEnemyBullet
 
     public EnemyBatRed enemyBatRed = default;
 
+    public bool isBatRedDie = false;
+
     // Start is called before the first frame update
     void Start()
     {
+        isBatRedDie = false;
         this.bulletCnt = 20;
         this.bullet = new GameObject[bulletCnt];
 
@@ -44,6 +47,8 @@ public class EnemyAttackBatRed : CreateEnemyBullet
     {
         if (collision.tag == "Player")
         {
+            if (isBatRedDie == true) { return; }
+
             if (spawnFireBullet <= timeAfterSpawn)
             {
                 enemyBatRed.OnFindPlayer();
@@ -88,8 +93,17 @@ public class EnemyAttackBatRed : CreateEnemyBullet
     {
         if (collision.tag == "Player")
         {
+            if (isBatRedDie == true) { return; }
+
             enemyBatRed.OnDisappearPlayer();
         }
+    }
+
+
+    //! 붉은 박쥐가 죽을 때 쓰는 함수
+    public void OnBatRedDie()
+    {
+        isBatRedDie = true;
     }
 
 }

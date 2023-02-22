@@ -15,3 +15,4 @@ Make a Dungreed game project
 2023-02-22 / v0.0.11 / Error Fix    
 2023-02-22 / v0.0.12 / Fix Player Attack   
 2023-02-22 / v0.0.13 / Add Skel monster Hp and Die    
+2023-02-22 / v0.0.14 / Add BatRed monster Hp and Die    
