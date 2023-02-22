@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -17,18 +19,35 @@ public class PlayerAttack : MonoBehaviour
     public bool isTurning = false;
 
     private float curtime;
+
+    public bool isAttack = false;
+
+    public GameObject weaponPlayObjs = default;
+    public GameObject weaponPlay2Objs = default;
+
+
     GameObject damagePos;
-    GameObject weaponPos;
 
 
     GameObject playerObj;
 
+    public Canvas rotateSort = default;
+
     // Start is called before the first frame update
     void Start()
     {
+       
+        rotateSort = gameObject.GetComponentMust<Canvas>();
+
+        
+
+        isAttack = false;
         swordCnt = 40;
         damagePos = gameObject.FindChildObj("DamagePos");
-        weaponPos = gameObject.FindChildObj("WeaponPlay");
+        weaponPlayObjs = gameObject.FindChildObj("WeaponPlay");
+        weaponPlay2Objs = gameObject.FindChildObj("WeaponPlay2");
+        weaponPlay2Objs.SetActive(false);
+
         isTurning = false;
 
         GameObject gameObjs = GFunc.GetRootObj("GameObjs");
@@ -54,11 +73,14 @@ public class PlayerAttack : MonoBehaviour
 
     {
 
+        
         Vector2 len = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
 
         float lookZ = Mathf.Atan2(len.y, len.x);
 
         float z = lookZ * Mathf.Rad2Deg;
+
+        GFunc.Log($"{lookZ} 마우스 위치");
 
 
         transform.rotation = Quaternion.Euler(0, 0, z);
@@ -81,8 +103,25 @@ public class PlayerAttack : MonoBehaviour
 
         if (curtime <= 0)
         {
+            // 공격
             if (Input.GetMouseButtonDown(0))
             {
+                if(isAttack == false)
+                {
+                    isAttack = true;
+                    weaponPlay2Objs.SetActive(true);
+                    weaponPlayObjs.SetActive(false);
+
+                    rotateSort.sortingOrder = 4;
+                }
+                else
+                {
+                    isAttack = false;
+                    weaponPlay2Objs.SetActive(false);
+                    weaponPlayObjs.SetActive(true);
+                    rotateSort.sortingOrder = 3;
+
+                }
 
                 Vector3 bulletPos = damagePos.transform.position;
 
@@ -94,10 +133,11 @@ public class PlayerAttack : MonoBehaviour
                 if (-1.5f < lookZ && lookZ < 1.5f)
                 {
                     swordAttacks[swordCnt - 1].transform.Rotate(new Vector3(0, 0, -90f));
-
+                    
                 }
                 else
                 {
+
                     swordAttacks[swordCnt - 1].transform.Rotate(new Vector3(0, 0, 90f));
 
                 }
@@ -105,12 +145,8 @@ public class PlayerAttack : MonoBehaviour
                 swordCnt--;
 
 
-                //GameObject swordBullet = Instantiate(bullet, bulletPos, transform.rotation, gameObject.transform);
 
-
-                //swordBullet.transform.Rotate(new Vector3(0, 0, -90));
-
-                if(swordCnt == 1)
+                if (swordCnt == 1)
                 {
                     swordCnt = 40;
                 }

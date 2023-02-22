@@ -355,6 +355,22 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 16
       objectReference: {fileID: 0}
+    - target: {fileID: 2506627682761544247, guid: db09984cc252d6546ae069c315fe943d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2506627682761544247, guid: db09984cc252d6546ae069c315fe943d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2506627682761544247, guid: db09984cc252d6546ae069c315fe943d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2506627682761544247, guid: db09984cc252d6546ae069c315fe943d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2506627683222340867, guid: db09984cc252d6546ae069c315fe943d, type: 3}
       propertyPath: m_Size.x
       value: 46
@@ -475,6 +491,26 @@ PrefabInstance:
       propertyPath: swordNorbullet
       value: 
       objectReference: {fileID: 3437963265133767473, guid: eae5aab40c8a0ba46af97d72bad7e0e6, type: 3}
+    - target: {fileID: 2506627683504082287, guid: db09984cc252d6546ae069c315fe943d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2506627683504082287, guid: db09984cc252d6546ae069c315fe943d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2506627683504082287, guid: db09984cc252d6546ae069c315fe943d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2506627683504082287, guid: db09984cc252d6546ae069c315fe943d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3332662950879309013, guid: db09984cc252d6546ae069c315fe943d, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db09984cc252d6546ae069c315fe943d, type: 3}
 --- !u!1 &866416975
