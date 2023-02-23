@@ -18,3 +18,4 @@ Make a Dungreed game project
 2023-02-22 / v0.0.14 / Add BatRed monster Hp and Die    
 2023-02-22 / v0.0.14 / Make Skel Boss working    
 2023-02-23 / v0.0.15 / Make Skel Boss Laser Ani    
+2023-02-23 / v0.0.16 / Add Skel Boss Laser Pattern    

@@ -13,6 +13,7 @@ TagManager:
   - Ground
   - NoZone
   - FirstNoDown
+  - SkellBossLaser
   layers:
   - Default
   - TransparentFX
