@@ -39,7 +39,7 @@ public class PlayerAttack : MonoBehaviour
        
         rotateSort = gameObject.GetComponentMust<Canvas>();
 
-        
+        rotateSort.sortingLayerName = "Player";
 
         isAttack = false;
         swordCnt = 40;
@@ -111,14 +111,14 @@ public class PlayerAttack : MonoBehaviour
                     weaponPlay2Objs.SetActive(true);
                     weaponPlayObjs.SetActive(false);
 
-                    rotateSort.sortingOrder = 4;
+                    rotateSort.sortingOrder = 3;
                 }
                 else
                 {
                     isAttack = false;
                     weaponPlay2Objs.SetActive(false);
                     weaponPlayObjs.SetActive(true);
-                    rotateSort.sortingOrder = 3;
+                    rotateSort.sortingOrder = 1;
 
                 }
 

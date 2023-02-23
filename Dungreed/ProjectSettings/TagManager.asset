@@ -14,6 +14,7 @@ TagManager:
   - NoZone
   - FirstNoDown
   - SkellBossLaser
+  - SkelBossBullet
   layers:
   - Default
   - TransparentFX
@@ -51,9 +52,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Player
-    uniqueID: 2092455381
-    locked: 0
   - name: Ground
     uniqueID: 3940914407
+    locked: 0
+  - name: Player
+    uniqueID: 2092455381
     locked: 0

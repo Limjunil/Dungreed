@@ -641,7 +641,6 @@ MonoBehaviour:
   cooltime: 0
   isTurning: 0
   isAttack: 0
-  AttackOne: {x: 0, y: 0, z: 0, w: 0}
   weaponPlayObjs: {fileID: 0}
   weaponPlay2Objs: {fileID: 0}
   rotateSort: {fileID: 0}
@@ -664,7 +663,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!1 &2567468280607031165
 GameObject:

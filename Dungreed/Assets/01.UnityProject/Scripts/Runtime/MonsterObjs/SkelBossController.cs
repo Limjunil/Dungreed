@@ -5,8 +5,9 @@ using UnityEngine;
 public class SkelBossController : MonoBehaviour
 {
     //public Animator skelBossLtHandAni = default;
-    public SkelBossHandMove skelBossLtHandMove = default;
-    public SkelBossHandMove skelBossRtHandMove = default;
+    private SkelBossHandMove skelBossLtHandMove = default;
+    private SkelBossHandMove skelBossRtHandMove = default;
+    private SkelBossBulletPattern skelBossBullet = default;
 
     public bool isLaserOne = false;
     public bool isLaserTwo = false;
@@ -23,7 +24,12 @@ public class SkelBossController : MonoBehaviour
 
         skelBossLtHandMove = skelBossLtHand_.GetComponentMust<SkelBossHandMove>();
         skelBossRtHandMove = skelBossRtHand_.GetComponentMust<SkelBossHandMove>();
+        
+        GameObject skelBossBack_ = gameObject.FindChildObj("SkelBossBack");
+        GameObject skelBossBullets_ = gameObject.FindChildObj("SkelBossBullets");
 
+
+        skelBossBullet = skelBossBullets_.GetComponentMust<SkelBossBulletPattern>();
         //skelBossLtHandAni = skelBossLtHand_.GetComponentMust<Animator>();
     }
 
@@ -32,8 +38,8 @@ public class SkelBossController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            skelBossLtHandMove.StartLaser();
-
+            //skelBossLtHandMove.StartLaser();
+            skelBossBullet.OnStartBulletPattern();
 
         }
 
