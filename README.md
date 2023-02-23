@@ -20,3 +20,4 @@ Make a Dungreed game project
 2023-02-23 / v0.0.15 / Make Skel Boss Laser Ani    
 2023-02-23 / v0.0.16 / Add Skel Boss Laser Pattern    
 2023-02-23 / v0.0.17 / Add Skel Boss Bullet Pattern    
+2023-02-23 / v0.0.17 / Make Skel Boss Sword Pattern working    

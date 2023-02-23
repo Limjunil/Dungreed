@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class skelBossBullet : MonoBehaviour
 {
-    public float bulletSpeed = default;
 
     private Rigidbody2D skelBossBulletRigid = default;
+
+    public float bulletSpeed = default;
 
     // Start is called before the first frame update
     void Start()
