@@ -15,6 +15,7 @@ TagManager:
   - FirstNoDown
   - SkellBossLaser
   - SkelBossBullet
+  - SkelSwdHalf
   layers:
   - Default
   - TransparentFX

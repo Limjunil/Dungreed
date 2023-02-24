@@ -8,6 +8,7 @@ public class SkelBossController : MonoBehaviour
     private SkelBossHandMove skelBossLtHandMove = default;
     private SkelBossHandMove skelBossRtHandMove = default;
     private SkelBossBulletPattern skelBossBullet = default;
+    private SkelBossSwordPattern skelBossSwd = default;
 
     public bool isLaserOne = false;
     public bool isLaserTwo = false;
@@ -27,9 +28,12 @@ public class SkelBossController : MonoBehaviour
         
         GameObject skelBossBack_ = gameObject.FindChildObj("SkelBossBack");
         GameObject skelBossBullets_ = gameObject.FindChildObj("SkelBossBullets");
+        GameObject skelBossSword_ = gameObject.FindChildObj("SkelBossSwds");
+
 
 
         skelBossBullet = skelBossBullets_.GetComponentMust<SkelBossBulletPattern>();
+        skelBossSwd = skelBossSword_.GetComponentMust<SkelBossSwordPattern>();
         //skelBossLtHandAni = skelBossLtHand_.GetComponentMust<Animator>();
     }
 
@@ -38,8 +42,16 @@ public class SkelBossController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z))
         {
+
+            //레이저 패턴 시작
             //skelBossLtHandMove.StartLaser();
-            skelBossBullet.OnStartBulletPattern();
+
+            // 탄환 탄막 패턴 시작
+            //skelBossBullet.OnStartBulletPattern();
+
+
+            // 소드 패턴 시작
+            skelBossSwd.OnSkelSwdPattern();
 
         }
 

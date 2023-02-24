@@ -6,48 +6,109 @@ using static UnityEngine.GraphicsBuffer;
 public class SkelBossSword : MonoBehaviour
 {
 
-    private Rigidbody2D skelBossSwdRigid = default;
+    public Rigidbody2D skelBossSwdRigid = default;
 
     public float swordSpeed = default;
 
     public GameObject target = default;
     public Transform targetPlayer = default;
+    public BoxCollider2D skelSwdCollider = default;
+    public Canvas skelSwdSort = default;
+
+    public bool GoSwdAttack = false;
+    public bool EndSwdPattern = false;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        EndSwdPattern = false;
+        GoSwdAttack = false;
         swordSpeed = 10f;
 
         skelBossSwdRigid = gameObject.GetComponentMust<Rigidbody2D>();
+        skelSwdCollider = gameObject.GetComponentMust<BoxCollider2D>();
+        skelSwdSort = gameObject.GetComponentMust<Canvas>();
+
+        skelSwdSort.sortingLayerName = "Ground";
+        skelSwdSort.sortingOrder = 1;
+
+        skelSwdCollider.enabled = false;
     }
+
+    private void OnEnable()
+    {
+        StartCoroutine(StartAttackSwd());
+    }
+
+    private void OnDisable()
+    {
+        ResetSwd();
+    }
+
 
     // Update is called once per frame
     void Update()
     {
+        if(GoSwdAttack == false)
+        {
+            if(EndSwdPattern == true) { return; }
+            TargetPlayerSwd();
 
+        }
+        else
+        {
+            skelBossSwdRigid.velocity = transform.up * -1 * swordSpeed;
+
+        }
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer.Equals(LayerMask.NameToLayer("Ground")))
+        {
+            skelSwdSort.sortingLayerName = "Default";
+            skelSwdSort.sortingOrder = 0;
+
+        }
+    }
+
+    public void TargetPlayerSwd()
+    {
         target = GameObject.FindWithTag("Player");
         targetPlayer = target.transform;
 
 
-        Vector2 lenSwd = targetPlayer.position - gameObject.transform.position;
+        Vector2 directionSwd = new Vector2(
+            gameObject.transform.position.x - targetPlayer.position.x,
+            gameObject.transform.position.y - targetPlayer.position.y);
 
-        float lookZ = Mathf.Atan2(lenSwd.y, lenSwd.x);
 
-        float z = lookZ * Mathf.Rad2Deg;
+        float angleSwd = Mathf.Atan2(directionSwd.y, directionSwd.x) *
+            Mathf.Rad2Deg;
 
-        transform.rotation = Quaternion.Euler(0, 0, z);
+        Quaternion angleSwdAxis = Quaternion.AngleAxis(angleSwd - 90f, Vector3.forward);
+        Quaternion rotationSwd = Quaternion.Slerp(transform.rotation, angleSwdAxis,
+            swordSpeed * Time.deltaTime);
 
-        if (-1.5f < lookZ && lookZ < 1.5f)
-        {
-            gameObject.transform.localScale = new Vector3(-1f, 1f, 1f);
-        }
-        else
-        {
+        transform.rotation = rotationSwd;
+    }   // TargetPlayerSwd()
 
-            gameObject.transform.localScale = new Vector3(1f, -1f, 1f);
-
-        }
-
-        //skelBossSwdRigid.velocity = transform.up * swordSpeed;
+    IEnumerator StartAttackSwd()
+    {
+        yield return new WaitForSeconds(4f);
+        skelSwdSort.sortingLayerName = "Ground";
+        skelSwdSort.sortingOrder = 1;
+        skelSwdCollider.enabled = true;
+        GoSwdAttack = true;
     }
+
+
+    public void ResetSwd()
+    {
+        
+        GoSwdAttack = false;
+        EndSwdPattern = false;
+    }
+
 }
