@@ -80,4 +80,16 @@ class BatRed : EnemyObjs
     }
 }
 
+class SkelBoss : EnemyObjs
+{
+    public SkelBoss()
+    {
+        this.monsterName = "SkelBoss";
+        this.monsterHp = 100;
+        this.monsterDamage = 8;
+        this.monsterDefence = 10;
+        this.monsterGold = 50;
+    }
+}
+
 

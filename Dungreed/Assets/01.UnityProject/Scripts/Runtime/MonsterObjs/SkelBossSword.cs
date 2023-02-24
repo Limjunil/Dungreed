@@ -96,7 +96,7 @@ public class SkelBossSword : MonoBehaviour
 
     IEnumerator StartAttackSwd()
     {
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(3f);
         skelSwdSort.sortingLayerName = "Ground";
         skelSwdSort.sortingOrder = 1;
         skelSwdCollider.enabled = true;

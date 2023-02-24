@@ -21,12 +21,17 @@ public class SkelBossHandMove : MonoBehaviour
 
     public bool laserOne = false;
 
+    public bool OnlyOnePlz = false;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
+        OnlyOnePlz = false;
         laserOne = false;
         countTime = 0f;
-        skelBossHandSpeed = 5f;
+        skelBossHandSpeed = 6f;
         isLaserPattern = false;
         skelBossHandRigid = gameObject.GetComponentMust<Rigidbody2D>();
         skelBossLtHandAni = gameObject.GetComponentMust<Animator>();
@@ -56,7 +61,7 @@ public class SkelBossHandMove : MonoBehaviour
 
                 countTime += Time.deltaTime;
 
-                if(3f < countTime)
+                if(1.5f < countTime)
                 {
                     laserOne = true;
                     GFunc.Log("레이저 발사");
@@ -79,13 +84,10 @@ public class SkelBossHandMove : MonoBehaviour
 
     IEnumerator LaserPatternStart()
     {
-
-        
-        yield return new WaitForSeconds(1f);
-
+                
         skelBossLtHandAni.SetTrigger("SkelBossLaser");
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
         isLaserPattern = false;
         laserOne = false;
@@ -94,14 +96,19 @@ public class SkelBossHandMove : MonoBehaviour
         if(gameObject.transform.name == "SkelBossLt")
         {
 
-            skelBossController.OnLaserOnePattern();
+            if(OnlyOnePlz == false)
+            {
+                OnlyOnePlz = true;
+                skelBossController.OnLaserOnePattern();
+            }
+            else
+            {
+                OnlyOnePlz = false;
+
+            }
+
         }
 
-        if (gameObject.transform.name == "SkelBossRt")
-        {
-
-            skelBossController.OnLaserTwoPattern();
-        }
     }
 
     public void GoToPlayerPosHand()

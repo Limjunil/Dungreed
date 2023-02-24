@@ -55,7 +55,7 @@ public class SkelBossBullet : MonoBehaviour
 
         //animator.SetTrigger("EndFire");
         GFunc.Log("실행됨");
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(0.5f);
 
         gameObject.SetActive(false);
     }

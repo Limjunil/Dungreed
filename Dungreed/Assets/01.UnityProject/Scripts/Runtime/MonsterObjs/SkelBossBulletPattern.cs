@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SkelBossBulletPattern : MonoBehaviour
@@ -19,6 +20,8 @@ public class SkelBossBulletPattern : MonoBehaviour
     public Vector2 firstBulletPos = default;
     public bool OnResetPos = false;
 
+    public Animator skelBossBulletAni = default;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,14 +32,18 @@ public class SkelBossBulletPattern : MonoBehaviour
         rotateSpeed = 30f;
         firstBulletPos = gameObject.transform.position;
 
+        GameObject skelBossBack_ = gameObject.transform.parent.gameObject;
+
+        skelBossBulletAni = skelBossBack_.GetComponentInParent<Animator>();
+
+
         skelBossUp = new GameObject[bulletCnt];
         skelBossDown = new GameObject[bulletCnt];
         skelBossLt = new GameObject[bulletCnt];
         skelBossRt = new GameObject[bulletCnt];
 
 
-
-        for(int i = 0; i < bulletCnt; i++)
+        for (int i = 0; i < bulletCnt; i++)
         {
             skelBossUp[i] = Instantiate(skelBossBulletPrefabs, firstBulletPos,
                 Quaternion.identity, gameObject.transform);
@@ -64,21 +71,31 @@ public class SkelBossBulletPattern : MonoBehaviour
 
             if(firstStart == false)
             {
-                StartCoroutine(OnSkelBossBullets());
+                skelBossBulletAni.SetTrigger("SkelBossBullet");
+                int randomVal = Random.Range(-1, 1 + 1);
+                StartCoroutine(OnSkelBossBullets(randomVal));
                 firstStart = true;
             }
         }
 
         if(OnResetPos == true)
         {
+            skelBossBulletAni.SetTrigger("EndBullet");
+
             StartCoroutine(ReSetPos());
             OnResetPos = false;
         }
     }
 
 
-    IEnumerator OnSkelBossBullets()
+    IEnumerator OnSkelBossBullets(int randomVal)
     {
+
+        if(randomVal == 0)
+        {
+            randomVal = 1;
+        }
+
         float rotateVal = 0f;
 
         for(int i = 0; i < bulletCnt; i++)
@@ -94,7 +111,7 @@ public class SkelBossBulletPattern : MonoBehaviour
             skelBossLt[i].SetActive(true);
             skelBossRt[i].SetActive(true);
 
-            rotateVal += -15f;
+            rotateVal += -15f * randomVal;
 
             yield return new WaitForSeconds(0.3f);
         }
@@ -112,7 +129,7 @@ public class SkelBossBulletPattern : MonoBehaviour
     IEnumerator ReSetPos()
     {
 
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3.5f);
 
         //gameObject.transform.rotation = Quaternion.identity;
 

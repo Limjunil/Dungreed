@@ -21,7 +21,7 @@ public class SkelBossSwordPattern : MonoBehaviour
         GoSkelSwdPattern = false;
         swordCount = 6;
         skelBossSwords = new GameObject[swordCount];
-        firstPosSwd = new Vector3(-350f, 330f, 0f);
+        firstPosSwd = new Vector3(-350f, 130f, 0f);
 
         float posX = 150f;
 
@@ -61,12 +61,12 @@ public class SkelBossSwordPattern : MonoBehaviour
         {
             skelBossSwords[i].SetActive(true);
 
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.4f);
         }
 
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(6f);
 
-        firstPosSwd = new Vector3(-350f, 330f, 0f);
+        firstPosSwd = new Vector3(-350f, 130f, 0f);
         float posX = 150f;
 
         for (int i = 0; i < swordCount; i++)
