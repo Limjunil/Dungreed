@@ -94,6 +94,18 @@ public class EnemySkelNorGreatSwd : EnemyMoveController
             }
 
         }
+
+        if (collision.gameObject.layer.Equals(LayerMask.NameToLayer("Ground")) ||
+            collision.gameObject.layer.Equals(LayerMask.NameToLayer("GroundBg")))
+        {
+            if (isDie == true)
+            {
+                GFunc.Log("실행봄");
+                enemyRigid.constraints = RigidbodyConstraints2D.FreezePositionY;
+
+            }
+
+        }
     }
 
     public override void MonsterDie()
@@ -101,6 +113,8 @@ public class EnemySkelNorGreatSwd : EnemyMoveController
         base.MonsterDie();
         
         skelAnimator.SetTrigger("DieSkel");
-        monsterCollider.SkelDie(true);
+        monsterCollider.SkelDie(true, 1f);
+
+
     }
 }

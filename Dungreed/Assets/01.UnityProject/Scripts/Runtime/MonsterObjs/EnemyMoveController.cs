@@ -54,11 +54,11 @@ public class EnemyMoveController : MonoBehaviour
 
         if (0 < changeWay)
         {
-            gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
+            gameObject.transform.localScale = new Vector3(0.283f, 0.283f, 0.283f);
         }
         else
         {
-            gameObject.transform.localScale = new Vector3(-1f, 1f, 1f);
+            gameObject.transform.localScale = new Vector3(-0.283f, 0.283f, 0.283f);
 
         }
     }   // OnMoveEnemy()
@@ -74,7 +74,7 @@ public class EnemyMoveController : MonoBehaviour
 
         if (-1.5f < lookZ && lookZ < 1.5f)
         {
-            gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
+            gameObject.transform.localScale = new Vector3(0.283f, 0.283f, 0.283f);
             
             if (enemyFly == false)
             {
@@ -84,7 +84,7 @@ public class EnemyMoveController : MonoBehaviour
         }
         else
         {
-            gameObject.transform.localScale = new Vector3(-1f, 1f, 1f);
+            gameObject.transform.localScale = new Vector3(-0.283f, 0.283f, 0.283f);
 
             if (enemyFly == false)
             {

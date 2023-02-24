@@ -25,7 +25,7 @@ public class SkelBossController : MonoBehaviour
     public bool isLaserOne = false;
     public bool isLaserTwo = false;
     public bool isDieSkelBoss = false;
-    
+    public bool isFirstPattern = false;
 
 
     public EnemyObjs enemyObjs = default;
@@ -33,6 +33,7 @@ public class SkelBossController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        isFirstPattern = false;
         isDieSkelBoss = false;
         isLaserOne = false;
         isLaserTwo = false;
@@ -75,7 +76,7 @@ public class SkelBossController : MonoBehaviour
         if (isDieSkelBoss == true) { return; }
 
 
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (isFirstPattern == false)
         {
 
             ////레이저 패턴 시작
@@ -89,6 +90,8 @@ public class SkelBossController : MonoBehaviour
             //skelBossSwd.OnSkelSwdPattern();
 
             StartCoroutine(SkelBossPattern());
+
+            isFirstPattern = true;
 
         }
 
@@ -173,7 +176,10 @@ public class SkelBossController : MonoBehaviour
 
     IEnumerator SkelBossPattern()
     {
-        while(0 < enemyCurrentHp)
+
+        yield return new WaitForSeconds(1f);
+
+        while (0 < enemyCurrentHp)
         {
             int randamVal_ = Random.Range(1, 3 + 1);
 

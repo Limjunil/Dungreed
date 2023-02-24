@@ -81,9 +81,23 @@ public class MonsterCollider : MonoBehaviour
         }
     }
 
-    public void SkelDie(bool isOn)
+
+    public void MonsterFeetOnOff(bool isOn, float gravity)
     {
-        MonsterFeetOnOff(isOn);
+        monsterCollider.isTrigger = isOn;
+        if (isOn == true)
+        {
+            monsterRigid.gravityScale = gravity;
+
+        }
+        else
+        {
+            monsterRigid.gravityScale = gravity;
+        }
+    }
+    public void SkelDie(bool isOn, float gravity)
+    {
+        MonsterFeetOnOff(isOn, gravity);
 
         isSkelDie = true;
     }

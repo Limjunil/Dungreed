@@ -16,6 +16,7 @@ TagManager:
   - SkellBossLaser
   - SkelBossBullet
   - SkelSwdHalf
+  - DashAttack
   layers:
   - Default
   - TransparentFX

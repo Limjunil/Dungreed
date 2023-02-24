@@ -16,7 +16,7 @@ public class Movement2D : MonoBehaviour
     private Rigidbody2D playerRigid = default;
     private Animator animator = default;
 
-    [HideInInspector]
+
     public bool isLongJump = false;
 
 
@@ -44,13 +44,22 @@ public class Movement2D : MonoBehaviour
     private int maxDashCnt = default;
     private int currentDashCnt = default;
 
+    // 대쉬 때 사용할 잔상 이미지
+    public GameObject dashGhostImagePrefab;
+    public GameObject[] dashGhostBgImage = default;
+    public int dashImageCnt = default;
+
+    public int ChkdashImageCnt = default;
+
+    public GameObject dashAttack = default;
+
 
     private void Awake()
     {
         playerSpeed = 5f;
         jumpForce = 10f;
         isLongJump = false;
-        dashSpeed = 20f;
+        dashSpeed = 15f;
 
         maxJumpCnt = 2;
         currentJumpCnt = 0;
@@ -67,8 +76,27 @@ public class Movement2D : MonoBehaviour
         isGroundOne = false;
         isGroundTwo = false;
 
+        ChkdashImageCnt = 0;
 
-}
+        dashImageCnt = 12;
+        dashGhostBgImage = new GameObject[dashImageCnt];
+
+        GameObject gameObjs_ = GFunc.GetRootObj("GameObjs");
+        GameObject etcSpawn_ = gameObjs_.FindChildObj("EtcSpawn");
+
+        for (int i = 0; i < dashImageCnt; i++)
+        {
+            dashGhostBgImage[i] = Instantiate(dashGhostImagePrefab,
+                gameObject.transform.position,
+                Quaternion.identity, etcSpawn_.transform);
+
+            dashGhostBgImage[i].SetActive(false);
+        }
+
+        dashAttack = gameObject.FindChildObj("DashAttack");
+        dashAttack.SetActive(false);
+    }
+
 
     // Start is called before the first frame update
     void Start()
@@ -162,6 +190,7 @@ public class Movement2D : MonoBehaviour
     {
         if (0 < currentDashCnt)
         {
+            dashAttack.SetActive(true);
             Vector2 len = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
             // 길이이자 방향이다.
 
@@ -170,10 +199,56 @@ public class Movement2D : MonoBehaviour
 
             currentDashCnt--;
 
+            StartCoroutine(DashAlpha());
+
         }
 
 
     }   // OnDash()
+
+
+    public IEnumerator DashAlpha()
+    {
+
+        if(ChkdashImageCnt == 12)
+        {
+            ChkdashImageCnt = 0;
+        }
+
+        int countDash = ChkdashImageCnt + 4;
+
+        for (int i = ChkdashImageCnt; i < countDash; i++)
+        {
+
+            Vector2 len = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+
+            float lookZ = Mathf.Atan2(len.y, len.x);
+
+            if (-1.5f < lookZ && lookZ < 1.5f)
+            {
+                dashGhostBgImage[i].transform.localScale = new Vector3(1f, 1f, 1f);
+            }
+            else
+            {
+
+                dashGhostBgImage[i].transform.localScale = new Vector3(-1f, 1f, 1f);
+
+            }
+
+            dashGhostBgImage[i].transform.position = gameObject.transform.position;
+                
+
+            dashGhostBgImage[i].SetActive(true);
+
+            ChkdashImageCnt++;
+
+            yield return new WaitForSeconds(0.075f);
+
+        }
+
+        dashAttack.SetActive(false);
+
+    }
 
     public IEnumerator ReDashCnt()
     {

@@ -20,10 +20,11 @@ public class EnemyAttackSkelNorGreatSwd : CreateEnemyBullet
     {
         isChkAttack = false;
         this.spawnFireBullet = 3f;
-        this.gameObjs = GFunc.GetRootObj("GameObjs");
-        GameObject enemySkel_ = gameObjs.FindChildObj("SkelNorGreatSwd");
-        enemySkel = enemySkel_.GetComponentMust<EnemySkelNorGreatSwd>();
-        skelAnimator = enemySkel_.GetComponentMust<Animator>();
+
+        enemySkel = gameObject.GetComponentInParent<EnemySkelNorGreatSwd>();
+
+
+        skelAnimator = gameObject.GetComponentInParent<Animator>();
 
         GameObject skelSword = gameObject.FindChildObj("GreatSwordSkel");
         swordcollider = skelSword.GetComponentMust<BoxCollider2D>();
