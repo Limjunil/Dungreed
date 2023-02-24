@@ -42,6 +42,7 @@ public class SkelBossHandMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (skelBossController.isDieSkelBoss == true) { return; }
 
 
         // 레이저 패턴이 끝나면 다시 대기 상태 애니메이션 활성화

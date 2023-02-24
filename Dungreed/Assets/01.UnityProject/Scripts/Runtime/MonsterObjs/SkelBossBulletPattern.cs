@@ -21,6 +21,7 @@ public class SkelBossBulletPattern : MonoBehaviour
     public bool OnResetPos = false;
 
     public Animator skelBossBulletAni = default;
+    public SkelBossController skelBossController = default;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +36,7 @@ public class SkelBossBulletPattern : MonoBehaviour
         GameObject skelBossBack_ = gameObject.transform.parent.gameObject;
 
         skelBossBulletAni = skelBossBack_.GetComponentInParent<Animator>();
-
+        skelBossController = gameObject.GetComponentInParent<SkelBossController>();
 
         skelBossUp = new GameObject[bulletCnt];
         skelBossDown = new GameObject[bulletCnt];
@@ -65,6 +66,8 @@ public class SkelBossBulletPattern : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(skelBossController.isDieSkelBoss == true) { return; }
+
         if(startBulletPattern == true)
         {
             //gameObject.transform.Rotate(0, 0, Time.deltaTime * rotateSpeed);

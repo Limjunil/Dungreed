@@ -15,9 +15,13 @@ public class SkelBossSwordPattern : MonoBehaviour
 
     public bool GoSkelSwdPattern = false;
 
+    public SkelBossController skelBossController = default;
+
     // Start is called before the first frame update
     void Start()
     {
+        skelBossController = gameObject.GetComponentInParent<SkelBossController>();
+
         GoSkelSwdPattern = false;
         swordCount = 6;
         skelBossSwords = new GameObject[swordCount];
@@ -43,7 +47,9 @@ public class SkelBossSwordPattern : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GoSkelSwdPattern == true)
+        if (skelBossController.isDieSkelBoss == true) { return; }
+
+        if (GoSkelSwdPattern == true)
         {
             StartCoroutine(StartSkelSwdPattern());
             GoSkelSwdPattern = false;

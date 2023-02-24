@@ -14,6 +14,9 @@ public class SkelBossController : MonoBehaviour
     private GameObject monsterhpBack = default;
     private GameObject monsterHpBar = default;
     private Image monsterHp = default;
+    private GameObject skelBossDead = default;
+    private Animator skelBossAni = default;
+    private BoxCollider2D skelBossHeadCollider = default;
 
 
     public float enemyAmount = default;
@@ -21,7 +24,7 @@ public class SkelBossController : MonoBehaviour
     public int enemyCurrentHp = default;
     public bool isLaserOne = false;
     public bool isLaserTwo = false;
-
+    public bool isDieSkelBoss = false;
     
 
 
@@ -30,6 +33,7 @@ public class SkelBossController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        isDieSkelBoss = false;
         isLaserOne = false;
         isLaserTwo = false;
 
@@ -54,13 +58,22 @@ public class SkelBossController : MonoBehaviour
         enemyCurrentHp = enemyObjs.MonsterHp();
 
         GetBossHpComonet();
+
+        skelBossDead = gameObject.FindChildObj("SkelBossDead");
+        skelBossDead.SetActive(false);
+
+        skelBossAni = gameObject.GetComponentMust<Animator>();
+        skelBossHeadCollider = gameObject.GetComponentMust<BoxCollider2D>();
+        skelBossHeadCollider.enabled = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-
         MonsterBossHpVal();
+
+        if (isDieSkelBoss == true) { return; }
+
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
@@ -149,16 +162,20 @@ public class SkelBossController : MonoBehaviour
     {
         // 보스 처치시 발생
 
+        isDieSkelBoss = true;
+        skelBossHeadCollider.enabled = false;
+        monsterhpBack.transform.localScale = new Vector3(0.001f, 0.001f, 0.001f);
+
+        skelBossAni.SetTrigger("DieSkelBoss");
 
     }
+
 
     IEnumerator SkelBossPattern()
     {
         while(0 < enemyCurrentHp)
         {
-            //int randamVal_ = Random.Range(1, 3 + 1);
-
-            int randamVal_ = 2;
+            int randamVal_ = Random.Range(1, 3 + 1);
 
             switch (randamVal_)
             {

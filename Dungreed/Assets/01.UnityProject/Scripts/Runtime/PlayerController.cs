@@ -20,8 +20,11 @@ public class PlayerController : MonoBehaviour
 
     public bool isDungeon = false;
 
+    public bool inBoss = false;
+
     private void Awake()
     {
+        inBoss = false;
         isDungeon = false;
         isIgnore = true;
         movement2D = gameObject.GetComponentMust<Movement2D>();
@@ -44,7 +47,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-              
+        if(inBoss == true) 
+        {
+            playerRigid.velocity = Vector3.zero;
+            return; 
+        }     
 
         float x = Input.GetAxisRaw("Horizontal");
 

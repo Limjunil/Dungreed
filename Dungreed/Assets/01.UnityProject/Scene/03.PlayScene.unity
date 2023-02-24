@@ -280,6 +280,104 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 140705191}
   m_CullTransparentMesh: 1
+--- !u!1 &162336005
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 162336006}
+  - component: {fileID: 162336009}
+  - component: {fileID: 162336008}
+  - component: {fileID: 162336007}
+  m_Layer: 0
+  m_Name: StartSkelBossBattle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &162336006
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162336005}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3307533847582222653}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 62, y: 164}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &162336007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162336005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56c3a18863a31f4429c2bcf24a068eb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!50 &162336008
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162336005}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &162336009
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162336005}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 100, y: 500}
+  m_EdgeRadius: 0
 --- !u!1 &196009767
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,6 +748,82 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1300, y: 140}
   m_EdgeRadius: 0
+--- !u!1 &287028419
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 287028420}
+  - component: {fileID: 287028422}
+  - component: {fileID: 287028421}
+  m_Layer: 5
+  m_Name: SkelBossDead
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &287028420
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 287028419}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1322341028}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 30, y: -8}
+  m_SizeDelta: {x: 204, y: 129}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &287028421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 287028419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 50d7769bbc05d4c499646258928755be, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &287028422
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 287028419}
+  m_CullTransparentMesh: 1
 --- !u!1 &301787678
 GameObject:
   m_ObjectHideFlags: 0
@@ -1982,6 +2156,7 @@ MonoBehaviour:
   skelBossHandSpeed: 0
   countTime: 0
   laserOne: 0
+  OnlyOnePlz: 0
 --- !u!50 &940356103
 Rigidbody2D:
   serializedVersion: 4
@@ -2691,6 +2866,8 @@ MonoBehaviour:
   firstStart: 0
   firstBulletPos: {x: 0, y: 0}
   OnResetPos: 0
+  skelBossBulletAni: {fileID: 0}
+  skelBossController: {fileID: 0}
 --- !u!1 &1171393872
 GameObject:
   m_ObjectHideFlags: 0
@@ -2904,7 +3081,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1322341028
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2921,6 +3098,7 @@ RectTransform:
   - {fileID: 1610067395}
   - {fileID: 1548681192}
   - {fileID: 940356101}
+  - {fileID: 287028420}
   m_Father: {fileID: 3307533847582222653}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3025,6 +3203,7 @@ MonoBehaviour:
   enemyCurrentHp: 0
   isLaserOne: 0
   isLaserTwo: 0
+  isDieSkelBoss: 0
 --- !u!61 &1322341034
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3729,6 +3908,7 @@ MonoBehaviour:
   skelBossHandSpeed: 0
   countTime: 0
   laserOne: 0
+  OnlyOnePlz: 0
 --- !u!50 &1548681197
 Rigidbody2D:
   serializedVersion: 4
@@ -3805,6 +3985,7 @@ MonoBehaviour:
   swordCount: 0
   firstPosSwd: {x: 0, y: 0, z: 0}
   GoSkelSwdPattern: 0
+  skelBossController: {fileID: 0}
 --- !u!223 &1610067397
 Canvas:
   m_ObjectHideFlags: 0
@@ -5447,6 +5628,7 @@ RectTransform:
   - {fileID: 3307533847112109664}
   - {fileID: 3307533848636392655}
   - {fileID: 1322341028}
+  - {fileID: 162336006}
   m_Father: {fileID: 3307533848776242895}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
