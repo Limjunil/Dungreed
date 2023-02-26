@@ -9,6 +9,8 @@ public class EnemyBatRed : EnemyMoveController
 {
     public EnemyObjs enemyObjs = default;
     public GameObject dieBatRedImage = default;
+    public Image batRedImage = default;
+    public EnemyAttackBatRed attackBatRed = default;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +32,12 @@ public class EnemyBatRed : EnemyMoveController
 
         this.isFindPlayer = false;
         this.enemyFly = enemyObjs.MonsterCanFly();
+
+        GameObject searchPlayer = gameObject.FindChildObj("SearchPlayer");
+
+        attackBatRed = searchPlayer.GetComponentMust<EnemyAttackBatRed>();
+
+        batRedImage = gameObject.GetComponentMust<Image>();
 
 
         GetHpBarComonet();
@@ -92,11 +100,17 @@ public class EnemyBatRed : EnemyMoveController
         if (collision.gameObject.layer.Equals(LayerMask.NameToLayer("Ground")) ||
             collision.gameObject.layer.Equals(LayerMask.NameToLayer("GroundBg")))
         {
+
             if (isDie == true)
             {
                 GFunc.Log("실행봄");
                 enemyRigid.constraints = RigidbodyConstraints2D.FreezePositionY;
 
+            }
+            else
+            {
+                enemyRigid.velocity = new Vector2(-1f * enemyRigid.velocity.x,
+                -1f * enemyRigid.velocity.y);
             }
 
         }
@@ -108,12 +122,7 @@ public class EnemyBatRed : EnemyMoveController
     public override void MonsterDie()
     {
         base.MonsterDie();
-
-        GameObject searchPlayer = gameObject.FindChildObj("SearchPlayer");
-
-        EnemyAttackBatRed attackBatRed = searchPlayer.GetComponentMust<EnemyAttackBatRed>();
-
-        Image batRedImage = gameObject.GetComponentMust<Image>();
+                
         batRedImage.enabled = false;
 
         dieBatRedImage.SetActive(true);
@@ -126,7 +135,7 @@ public class EnemyBatRed : EnemyMoveController
 
     IEnumerator OffBatRed()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
         gameObject.SetActive(false);
     }
 

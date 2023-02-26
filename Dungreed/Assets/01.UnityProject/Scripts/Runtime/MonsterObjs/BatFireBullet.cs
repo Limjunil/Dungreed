@@ -26,6 +26,10 @@ public class BatFireBullet : MonoBehaviour
 
     }
 
+    private void OnDisable()
+    {
+        gameObject.SetActive(false);
+    }
     // Update is called once per frame
     void Update()
     {
@@ -37,6 +41,12 @@ public class BatFireBullet : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Player")
+        {
+            StopCoroutine("StartAutoOffBullet");
+            StartCoroutine(OffBullet());
+        }
+
+        if (collision.gameObject.layer.Equals(LayerMask.NameToLayer("Ground")))
         {
             StopCoroutine("StartAutoOffBullet");
             StartCoroutine(OffBullet());

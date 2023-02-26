@@ -253,7 +253,7 @@ RectTransform:
   m_GameObject: {fileID: 73014910}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 910969248}
@@ -262,7 +262,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 100}
-  m_SizeDelta: {x: 312, y: 150}
+  m_SizeDelta: {x: 650, y: 312.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &73014912
 MonoBehaviour:
@@ -837,7 +837,7 @@ RectTransform:
   m_GameObject: {fileID: 639278570}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.8, y: 1.8, z: 1.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 48264160}
@@ -846,7 +846,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1280, y: 360}
+  m_SizeDelta: {x: 2666.6667, y: 750}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &639278572
 MonoBehaviour:
@@ -1698,7 +1698,7 @@ RectTransform:
   m_GameObject: {fileID: 1927791654}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.8, y: 1.8, z: 1.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 48264160}
@@ -1707,7 +1707,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1150, y: 360}
+  m_SizeDelta: {x: 2395.8335, y: 750}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1927791656
 MonoBehaviour:
@@ -1774,7 +1774,7 @@ RectTransform:
   m_GameObject: {fileID: 2146871337}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.8, y: 1.8, z: 1.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 48264160}
@@ -1783,7 +1783,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 283, y: 0}
-  m_SizeDelta: {x: 90, y: 44}
+  m_SizeDelta: {x: 187.5, y: 91.66667}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2146871339
 MonoBehaviour:

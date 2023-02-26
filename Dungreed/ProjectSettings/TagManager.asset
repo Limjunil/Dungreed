@@ -17,6 +17,11 @@ TagManager:
   - SkelBossBullet
   - SkelSwdHalf
   - DashAttack
+  - NextDungUp
+  - NextDungDown
+  - NextDungLt
+  - NextDungRt
+  - NextDungBossIn
   layers:
   - Default
   - TransparentFX

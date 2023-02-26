@@ -47,6 +47,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        //GFunc.Log($"{gameObject.transform.position} {gameObject.transform.localPosition}");
         if(inBoss == true) 
         {
             playerRigid.velocity = Vector3.zero;
@@ -71,7 +73,7 @@ public class PlayerController : MonoBehaviour
             isIgnore = true;
             isDash = true;
             movement2D.OnDash();
-            Invoke("OnIsIgnore", 0.4f);
+            StartCoroutine(OnIsIgnore());
             StartCoroutine(StayDash());
         }
 
@@ -91,7 +93,7 @@ public class PlayerController : MonoBehaviour
 
             }
 
-            Invoke("OnIsIgnore", 0.4f);
+            StartCoroutine(OnIsIgnore());
 
         }
 
@@ -123,7 +125,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator StayDash()
     {
         
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(0.5f);
         isDash = false;
 
         GFunc.Log("tlfgod");
@@ -210,8 +212,9 @@ public class PlayerController : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void OnIsIgnore()
+    IEnumerator OnIsIgnore()
     {
+        yield return new WaitForSeconds(0.4f);
         isIgnore = false;
     }
 }

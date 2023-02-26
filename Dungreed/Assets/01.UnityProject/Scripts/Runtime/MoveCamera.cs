@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class MoveCamera : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class MoveCamera : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameObject gameObjs_ = GFunc.GetRootObj("GameObjs");
+        target = gameObjs_.FindChildObj("Player").transform;
+
         speed = 2;
 
         cameraHeight = Camera.main.orthographicSize;
@@ -58,40 +62,36 @@ public class MoveCamera : MonoBehaviour
 
         transform.position = new Vector3(clampX, clampY, -10f);
     }
+        
 
-
-    public void SetCameraRange(string dungeonNumer)
+    public void SetCameraRange(int dungeonNumer)
     {
         switch (dungeonNumer)
         {
-            case "Town":
-                // 마을의 카메라 사이즈
+            
+            case 0:
 
-                break;
+                // 던전 입구의 카메라 사이즈 00번째
+                center.x = 4f;
+                center.y = 3.5f;
 
-            case "DungeonInGrid":
-
-                // 던전 입구의 카메라 사이즈
-                center.x = 5.5f;
-                center.y = 2.5f;
-
-                size.x = 21f;
-                size.y = 10f;
-
-                break;
-
-            case "Dungeon1Grid":
-                // 던전 1의 카메라 사이즈
-                center.x = 5.5f;
-                center.y = 3f;
-
-                size.x = 21f;
+                size.x = 20f;
                 size.y = 12f;
 
                 break;
 
-            case "Dungeon2Grid":
-                // 던전 2의 카메라 사이즈
+            case 1:
+                // 던전 1의 카메라 사이즈 01번째
+                center.x = 5f;
+                center.y = 3.5f;
+
+                size.x = 22f;
+                size.y = 12f;
+
+                break;
+
+            case 2:
+                // 던전 2의 카메라 사이즈 02번째
                 center.x = 10f;
                 center.y = -1f;
 
@@ -100,28 +100,28 @@ public class MoveCamera : MonoBehaviour
 
                 break;
 
-            case "DungeonBossGateGrid":
-                // 보스방 입장의 카메라 사이즈
+            case 3:
+                // 보스방 입장의 카메라 사이즈 03번째
                 center.x = 9f;
-                center.y = 6f;
+                center.y = 4.5f;
 
-                size.x = 30f;
-                size.y = 17f;
+                size.x = 28f;
+                size.y = 14f;
 
                 break;
 
-            case "DungeonBossInGrid":
-                // 스테이지 1 보스방 진입 전 방의 카메라 사이즈
+            case 4:
+                // 스테이지 1 보스방 진입 전 방의 카메라 사이즈 04번째
                 center.x = 9f;
                 center.y = 2f;
 
-                size.x = 30f;
-                size.y = 10f;
+                size.x = 28f;
+                size.y = 9f;
 
                 break;
 
-            case "DungeonBoss1Grid":
-                // 스테이지 1 보스방의 카메라 사이즈
+            case 5:
+                // 스테이지 1 보스방의 카메라 사이즈 05번째
                 center.x = 10f;
                 center.y = 8f;
 
@@ -129,7 +129,10 @@ public class MoveCamera : MonoBehaviour
                 size.y = 21f;
                 break;
 
-            default:
+
+            case 6:
+                // 마을의 카메라 사이즈
+
                 break;
         }
     }

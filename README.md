@@ -24,3 +24,4 @@ Make a Dungreed game project
 2023-02-24 / v0.0.18 / Add Skel Boss Sword Pattern    
 2023-02-24 / v0.0.19 / Organize Skel Boss Patterns    
 2023-02-24 / v0.0.20 / Make Skel Boss end    
+2023-02-26 / v0.0.21 / Add Dungeon Map move    

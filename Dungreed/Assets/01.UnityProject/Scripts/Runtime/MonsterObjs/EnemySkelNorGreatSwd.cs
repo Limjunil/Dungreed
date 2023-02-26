@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class EnemySkelNorGreatSwd : EnemyMoveController
 {
 
@@ -9,6 +10,9 @@ public class EnemySkelNorGreatSwd : EnemyMoveController
     public Animator skelAnimator = default;
 
     public MonsterCollider monsterCollider = default;
+
+
+    public EnemyAttackSkelNorGreatSwd attackSkelNor = default;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +34,10 @@ public class EnemySkelNorGreatSwd : EnemyMoveController
 
         this.isFindPlayer = false;
         this.enemyFly = enemyObjs.MonsterCanFly();
+
+        GameObject rotateWeaSkel = gameObject.FindChildObj("RotateWeaSkel");
+
+        attackSkelNor = rotateWeaSkel.GetComponentMust<EnemyAttackSkelNorGreatSwd>();
 
         GetHpBarComonet();
 
@@ -111,10 +119,19 @@ public class EnemySkelNorGreatSwd : EnemyMoveController
     public override void MonsterDie()
     {
         base.MonsterDie();
-        
+
+        attackSkelNor.OnSkelNorDie();
         skelAnimator.SetTrigger("DieSkel");
+
         monsterCollider.SkelDie(true, 1f);
 
 
+        StartCoroutine(OffSkelNor());
+    }
+
+    IEnumerator OffSkelNor()
+    {
+        yield return new WaitForSeconds(1f);
+        gameObject.SetActive(false);
     }
 }

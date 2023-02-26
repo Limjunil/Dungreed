@@ -23,7 +23,6 @@ public class Movement2D : MonoBehaviour
     [SerializeField]
     private LayerMask groundLayer;  // 바닥 체크를 위한 충돌 레이어
     [SerializeField]
-
     private LayerMask groundBgLayer;  // 바닥 체크를 위한 충돌 레이어
 
     private BoxCollider2D playerCollider; // 플레이어의 충돌 범위
@@ -76,6 +75,9 @@ public class Movement2D : MonoBehaviour
         isGroundOne = false;
         isGroundTwo = false;
 
+        groundLayer = LayerMask.GetMask("Ground");
+        groundBgLayer = LayerMask.GetMask("GroundBg");
+
         ChkdashImageCnt = 0;
 
         dashImageCnt = 12;
@@ -101,6 +103,7 @@ public class Movement2D : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         StartCoroutine(ReDashCnt());
     }
 
@@ -277,4 +280,20 @@ public class Movement2D : MonoBehaviour
         animator.SetBool("Ground", true);
     }   // OnInDungeon()
 
+
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "NextDungUp" ||
+           collision.tag == "NextDungDown" ||
+           collision.tag == "NextDungLt" ||
+           collision.tag == "NextDungRt")
+        {
+
+            for(int i = 0; i < dashGhostBgImage.Length; i++)
+            {
+                dashGhostBgImage[i].SetActive(false);
+            }
+        }
+    }
 }

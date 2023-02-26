@@ -279,6 +279,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 7a7a7b5b3cfcea042988905a456ac950, type: 3}
   - {fileID: 21300000, guid: c11fde5bc516ea14f965c61894bc7454, type: 3}
   - {fileID: 21300000, guid: 73fd727b7afd78d4394dea1c5625a29c, type: 3}
+  - {fileID: 21300000, guid: 4b5c4c8bf0f97fe4c88c4b1da7d866c2, type: 3}
   - {fileID: 21300000, guid: a8d7bd8befeb00342a038ecad2b78b51, type: 3}
   - {fileID: 21300000, guid: e979539b961e2a042972e609c1d8c612, type: 3}
   - {fileID: 21300000, guid: 50d7769bbc05d4c499646258928755be, type: 3}
@@ -604,6 +605,7 @@ SpriteAtlas:
   - Tile_Stair_TopRight_waifu2x_noise1_scale2x
   - DungeonEat16_waifu2x_noise1_scale2x
   - SkellBossBack0_waifu2x_noise1_scale2x
+  - Sky_Day_waifu2x_noise1_scale2x
   - CandleOn23_waifu2x_noise1_scale2x
   - Wall_Basic_16_waifu2x_noise1_scale2x
   - SkellBossDead_5_waifu2x_noise1_scale2x

@@ -15,9 +15,12 @@ public class EnemyAttackSkelNorGreatSwd : CreateEnemyBullet
 
     public bool isChkAttack = false;
 
+    public bool isDieSkel = false;
+
     // Start is called before the first frame update
     void Start()
     {
+        isDieSkel = false;
         isChkAttack = false;
         this.spawnFireBullet = 3f;
 
@@ -51,7 +54,7 @@ public class EnemyAttackSkelNorGreatSwd : CreateEnemyBullet
     {
         if(collision.tag == "Player")
         {
-
+            if (isDieSkel == true) { return; }
             enemySkel.OnFindPlayer();
 
             Vector2 len = targetPlayer.position - gameObject.transform.position;
@@ -75,6 +78,7 @@ public class EnemyAttackSkelNorGreatSwd : CreateEnemyBullet
     {
         if(collision.tag == "Player")
         {
+            if (isDieSkel == true) { return; }
             enemySkel.OnDisappearPlayer();
         }
     }
@@ -100,7 +104,10 @@ public class EnemyAttackSkelNorGreatSwd : CreateEnemyBullet
         WaitAttack();
     }
 
-
+    public void OnSkelNorDie()
+    {
+        isDieSkel = true;
+    }
 
 
 }

@@ -10,6 +10,8 @@ public class EnemyAttackBatRed : CreateEnemyBullet
 
     public bool isBatRedDie = false;
 
+    public GameObject dungObjs = default;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,18 +22,20 @@ public class EnemyAttackBatRed : CreateEnemyBullet
         this.spawnFireBullet = 3f;
         this.batFirePrefab = Resources.Load<GameObject>("Prefabs/BatFire");
 
-        this.gameObjs = GFunc.GetRootObj("GameObjs");
 
-        GameObject batRed = gameObjs.FindChildObj("Bat_Red");
-        enemyBatRed = batRed.GetComponentMust<EnemyBatRed>();
+        GameObject batRed_ = gameObject.transform.parent.gameObject;
+        enemyBatRed = batRed_.GetComponentMust<EnemyBatRed>();
 
+        dungObjs = batRed_.transform.parent.gameObject;
 
         Vector3 BatBulletFirstPos = new Vector3(-1000f, 0f, 0f);
 
         for (int i = 0; i < bullet.Length; i++)
         {
             bullet[i] = Instantiate(batFirePrefab, BatBulletFirstPos,
-                Quaternion.identity, gameObjs.transform);
+                Quaternion.identity, dungObjs.transform);
+
+            bullet[i].transform.localScale = new Vector3(0.283f, 0.283f, 0.283f);
 
             bullet[i].SetActive(false);
         }
@@ -105,5 +109,8 @@ public class EnemyAttackBatRed : CreateEnemyBullet
     {
         isBatRedDie = true;
     }
+
+
+    
 
 }
