@@ -520,7 +520,7 @@ GameObject:
   - component: {fileID: 5549776445995514950}
   m_Layer: 5
   m_Name: SkelBoss
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1958,6 +1958,7 @@ GameObject:
   - component: {fileID: 5549776447098321048}
   - component: {fileID: 5549776447098321049}
   - component: {fileID: 5549776447098321050}
+  - component: {fileID: 2785896491848409847}
   m_Layer: 5
   m_Name: SkelLaser
   m_TagString: SkellBossLaser
@@ -2044,6 +2045,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1300, y: 140}
   m_EdgeRadius: 0
+--- !u!50 &2785896491848409847
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5549776447098321055}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &5549776447098409628
 GameObject:
   m_ObjectHideFlags: 0
@@ -2587,6 +2609,7 @@ GameObject:
   - component: {fileID: 5549776447484842618}
   - component: {fileID: 5549776447484842612}
   - component: {fileID: 5549776447484842619}
+  - component: {fileID: 5302601056065453478}
   m_Layer: 5
   m_Name: SkelLaser
   m_TagString: SkellBossLaser
@@ -2673,6 +2696,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1300, y: 140}
   m_EdgeRadius: 0
+--- !u!50 &5302601056065453478
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5549776447484842617}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &5549776447732723630
 GameObject:
   m_ObjectHideFlags: 0
@@ -15728,6 +15772,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ede015c8bd2381d438dd427790878184, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  monsterObjs: {fileID: 0}
+  ChkMosterVal: 0
 --- !u!1001 &6949467901155481685
 PrefabInstance:
   m_ObjectHideFlags: 0

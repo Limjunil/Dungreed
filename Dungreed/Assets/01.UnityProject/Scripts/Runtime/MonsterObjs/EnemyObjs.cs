@@ -9,8 +9,9 @@ public class EnemyObjs
     protected string monsterName = string.Empty;
     protected int monsterHp;
     protected int monsterDamage;
-    protected int monsterDefence;
-    protected int monsterGold;
+    protected int monsterLaserDamage;
+
+    protected int monsterExp;
     protected float monsterSpeed;
     protected bool monsterCanFly;
 
@@ -30,14 +31,10 @@ public class EnemyObjs
         return this.monsterDamage;
     }
 
-    public int MonsterDefence()
-    {
-        return this.monsterDefence;
-    }
 
-    public int MonsterGold()
+    public int MonsterExp()
     {
-        return this.monsterGold;
+        return this.monsterExp;
     }
 
     public float MonsterSpeed()
@@ -49,6 +46,11 @@ public class EnemyObjs
     {
         return this.monsterCanFly;
     }
+
+    public int MonsterLaserDamage()
+    {
+        return this.monsterLaserDamage;
+    }
 }   // EnemyObjs()
 
 
@@ -58,9 +60,8 @@ class SkelNorGreatSwd : EnemyObjs
     {
         this.monsterName = "SkelNormalGreatSword";
         this.monsterHp = 20;
-        this.monsterDamage = 10;
-        this.monsterDefence = 10;
-        this.monsterGold = 50;
+        this.monsterDamage = 6;
+        this.monsterExp = 20;
         this.monsterSpeed = 1f;
         this.monsterCanFly = false;
     }
@@ -72,9 +73,8 @@ class BatRed : EnemyObjs
     {
         this.monsterName = "BatRed";
         this.monsterHp = 15;
-        this.monsterDamage = 10;
-        this.monsterDefence = 10;
-        this.monsterGold = 50;
+        this.monsterDamage = 4;
+        this.monsterExp = 10;
         this.monsterSpeed = 1.5f;
         this.monsterCanFly = true;
     }
@@ -87,8 +87,8 @@ class SkelBoss : EnemyObjs
         this.monsterName = "SkelBoss";
         this.monsterHp = 100;
         this.monsterDamage = 8;
-        this.monsterDefence = 10;
-        this.monsterGold = 50;
+        this.monsterLaserDamage = 10;
+        this.monsterExp = 50;
     }
 }
 

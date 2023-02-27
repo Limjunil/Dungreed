@@ -56,6 +56,7 @@ MonoBehaviour:
   skelAnimator: {fileID: 0}
   swordcollider: {fileID: 0}
   isChkAttack: 0
+  isDieSkel: 0
 --- !u!58 &6374340792167358496
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -368,7 +369,7 @@ GameObject:
   - component: {fileID: 6374340794036104203}
   m_Layer: 5
   m_Name: SkelNorGreatSwd
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -495,9 +496,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skelAnimator: {fileID: 0}
   monsterCollider: {fileID: 0}
-  skelNorImage: {fileID: 0}
-  rotateWeaSkel: {fileID: 0}
-  dieSkelNor: {fileID: 0}
+  attackSkelNor: {fileID: 0}
 --- !u!114 &6374340794036104200
 MonoBehaviour:
   m_ObjectHideFlags: 0

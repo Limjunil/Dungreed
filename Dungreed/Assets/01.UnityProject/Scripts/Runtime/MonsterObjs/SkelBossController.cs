@@ -52,7 +52,7 @@ public class SkelBossController : MonoBehaviour
 
         skelBossBullet = skelBossBullets_.GetComponentMust<SkelBossBulletPattern>();
         skelBossSwd = skelBossSword_.GetComponentMust<SkelBossSwordPattern>();
-        //skelBossLtHandAni = skelBossLtHand_.GetComponentMust<Animator>();
+        
 
         enemyObjs = new SkelBoss();
         enemyMaxHp = enemyObjs.MonsterHp();

@@ -204,6 +204,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: b1a66ea651e020845bc33f86c515d7e7, type: 3}
   - {fileID: 21300000, guid: 49184fb698a3c4b4a9f3581952d3ab02, type: 3}
   - {fileID: 21300000, guid: bd6861c686ad0d04480c66982ea7af4d, type: 3}
+  - {fileID: 21300000, guid: 2529e3c65531c7c4ba39de4198693363, type: 3}
   - {fileID: 21300000, guid: 542e26c65e9084c4db3002ad0a91f358, type: 3}
   - {fileID: 21300000, guid: 7c2136d630e88ac45aed78c1dcaa764c, type: 3}
   - {fileID: 21300000, guid: 1c3e37d6da8c85e4cb0c591cf85978f1, type: 3}
@@ -256,6 +257,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 9422e4a88e74de24ab4ed8b6a41c37a3, type: 3}
   - {fileID: 21300000, guid: ad778db897404a3418be05998021535c, type: 3}
   - {fileID: 21300000, guid: b602e6d8f0d982d4286de9b9c4d45c91, type: 3}
+  - {fileID: 21300000, guid: 56b02fd8e0185b143acc327811c4b503, type: 3}
   - {fileID: 21300000, guid: 84d7a0e865cb7174fbc7fe845483faae, type: 3}
   - {fileID: 21300000, guid: c6f277e8747c39c4885ae2145ec6eea7, type: 3}
   - {fileID: 21300000, guid: e1b337f8e6039f748b2fc8d623946641, type: 3}
@@ -326,6 +328,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: f2be5f0c330ea6c4dab0bbe93dd05ba7, type: 3}
   - {fileID: 21300000, guid: 460aeb2cb8c6c124381b9d424ce5b6a9, type: 3}
   - {fileID: 21300000, guid: 9f181e2cbdee2aa4bbdfb584df16ecc7, type: 3}
+  - {fileID: 21300000, guid: ee6f8d3c5ee654b4bb79463429c5ead4, type: 3}
   - {fileID: 21300000, guid: 6eb2735cf7cc4244bbeea0bd39ca94b7, type: 3}
   - {fileID: 21300000, guid: 362ae85ccd9ecf44f88f70a9c23b99fa, type: 3}
   - {fileID: 21300000, guid: 3a977a5cb2fbf2446bcfa78a34b7a486, type: 3}
@@ -393,6 +396,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: cc00115f92af2f74eb795e43a159b445, type: 3}
   - {fileID: 21300000, guid: 99a1286fed1c9c84bbab597864d6e715, type: 3}
   - {fileID: 21300000, guid: 032ab87f5aeebd6428bdf2b2715fcfb0, type: 3}
+  - {fileID: 21300000, guid: 1f90c2af418bb2d49aa50cad1e42eb97, type: 3}
   - {fileID: 21300000, guid: 129bf9bf1d96d284bb991a473dfccc6b, type: 3}
   - {fileID: 21300000, guid: 09aeeabf3a1b7504486c61fd5887c058, type: 3}
   - {fileID: 21300000, guid: c39033cfee1b82845bbb5be97161fea8, type: 3}
@@ -555,6 +559,7 @@ SpriteAtlas:
   - SkellBossAttack07_waifu2x_noise1_scale2x
   - SkellBossLaserBody2_waifu2x_noise1_scale2x
   - Wall_Basic_3_waifu2x_noise1_scale2x
+  - CrossbowArrow_waifu2x_noise1_scale2x
   - BabyBatBulletFX3
   - CandleOn22_waifu2x_noise1_scale2x
   - SkellBossBack9_waifu2x_noise1_scale2x
@@ -607,6 +612,7 @@ SpriteAtlas:
   - BasicStone_MiddleLeft_waifu2x_noise1_scale2x
   - WormPassageIdle01_waifu2x_noise1_scale2x
   - Torch1 #221272_waifu2x_noise1_scale2x
+  - BossSkellPortrait_waifu2x_noise1_scale2x
   - SkellBossLeftHandIdle5_waifu2x_noise1_scale2x
   - DungeonEat08_waifu2x_noise1_scale2x
   - Door1 #222181_waifu2x_noise1_scale2x
@@ -677,6 +683,7 @@ SpriteAtlas:
   - DefaultImage
   - SkellBossIdle2_waifu2x_noise1_scale2x
   - SkellBossAttack03_waifu2x_noise1_scale2x
+  - Crossbow0_waifu2x_noise1_scale2x
   - Stele21_waifu2x_noise1_scale2x
   - BasicStone_BottomLeft_waifu2x_noise1_scale2x
   - SkellBossLeftHandIdle3_waifu2x_noise1_scale2x
@@ -744,6 +751,7 @@ SpriteAtlas:
   - Town_RightStair2_waifu2x_noise1_scale2x
   - SkellBossIdle6_waifu2x_noise1_scale2x
   - SkellBossLeftHandAttack03_waifu2x_noise1_scale2x
+  - Crossbow2_waifu2x_noise1_scale2x
   - DungeonEat20_waifu2x_noise1_scale2x
   - SkellBossLeftHandAttack02_waifu2x_noise1_scale2x
   - SkellBossAttack01_waifu2x_noise1_scale2x

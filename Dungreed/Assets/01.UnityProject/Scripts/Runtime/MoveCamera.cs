@@ -6,12 +6,12 @@ using static UnityEngine.GraphicsBuffer;
 public class MoveCamera : MonoBehaviour
 {
 
-    public Transform target;
+    public Transform target = default;
 
-    public float speed;
+    public float speedCamera = default;
 
-    public Vector2 center;
-    public Vector2 size;
+    public Vector2 center = default;
+    public Vector2 size = default;
 
 
     [SerializeField]
@@ -24,7 +24,7 @@ public class MoveCamera : MonoBehaviour
         GameObject gameObjs_ = GFunc.GetRootObj("GameObjs");
         target = gameObjs_.FindChildObj("Player").transform;
 
-        speed = 2;
+        speedCamera = 10;
 
         cameraHeight = Camera.main.orthographicSize;
         cameraWidth = cameraHeight * Screen.width / Screen.height;
@@ -44,8 +44,7 @@ public class MoveCamera : MonoBehaviour
 
     private void LateUpdate()
     {
-        transform.position = Vector3.Lerp(transform.position, target.position,
-            Time.deltaTime * speed);
+        transform.position = Vector3.Lerp(transform.position, target.position, speedCamera);
         transform.position = new Vector3(transform.position.x, transform.position.y, -10f);
 
 

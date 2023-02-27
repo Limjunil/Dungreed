@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,6 +19,9 @@ public class PlayerController : MonoBehaviour
     public Image playerHpBar = default;
     public GameObject playerHpTxt = default;
     public GameObject playerLevelTxt = default;
+    public Image playerImage = default;
+
+    public EnemyObjs monster = default;
 
     public bool isIgnore = true;
 
@@ -31,8 +35,14 @@ public class PlayerController : MonoBehaviour
 
     public int playerLevel = default;
 
+    public bool playerHit = false;
+
+    public bool isPlayerDie = false;
+
     private void Awake()
     {
+        isPlayerDie = false;
+        playerHit = false;
         inBoss = false;
         isDungeon = false;
         isIgnore = false;
@@ -45,9 +55,11 @@ public class PlayerController : MonoBehaviour
         playerRigid = gameObject.GetComponentMust<Rigidbody2D>();
 
 
-        playerHpMax = 80;
+        playerHpMax = 40;
         playercurrentHp = playerHpMax;
         playerLevel = 1;
+        playerImage = gameObject.GetComponentMust<Image>();
+
 
         GetPlayerHpComnent();
 
@@ -63,9 +75,15 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         PlayerHpandLevelVal();
+        if (isPlayerDie == true) { return; }
 
-
-        //GFunc.Log($"{gameObject.transform.position} {gameObject.transform.localPosition}");
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            //StartCoroutine(HitPlayerNow());
+            PlayerDie();
+        }
+        
+        
         if (inBoss == true) 
         {
             playerRigid.velocity = Vector3.zero;
@@ -168,7 +186,23 @@ public class PlayerController : MonoBehaviour
         playerHpTxt.SetTmpText($"{playercurrentHp} / {playerHpMax}");
         playerLevelTxt.SetTmpText($"{playerLevel}");
 
+        if(playercurrentHp <= 0)
+        {
+            // 플레이어 사망 시 시작할 함수
+            PlayerDie();
+        }
+
     }
+
+    
+    public void PlayerDie()
+    {
+        isPlayerDie = true;
+        movement2D.PlayerDieAct();
+
+    }
+    
+
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
@@ -195,19 +229,54 @@ public class PlayerController : MonoBehaviour
 
         if (collision.tag == "FirstNoDown")
         {
-            GFunc.Log("첫 진입 중!");
             isIgnore = false;
 
         }
 
         if(collision.tag == "SkelSword")
         {
+            if (playerHit == true || isPlayerDie == true) { return; }
+
+            monster = new SkelNorGreatSwd();
+            playercurrentHp -= monster.MonsterDamage();
+
             GFunc.Log("해골에게 공격 받았다!");
+
+            StartCoroutine(HitPlayerNow());
+
         }
 
         if(collision.tag == "BatFire")
         {
+            if (playerHit == true || isPlayerDie == true) { return; }
+
+            monster = new BatRed();
+            playercurrentHp -= monster.MonsterDamage();
+
             GFunc.Log("박쥐에게 공격 받았다!");
+            StartCoroutine(HitPlayerNow());
+        }
+
+        if(collision.tag == "SkellBossLaser")
+        {
+            if (playerHit == true || isPlayerDie == true) { return; }
+
+            monster = new SkelBoss();
+            playercurrentHp -= monster.MonsterLaserDamage();
+
+            GFunc.Log("레이저 공격 받았다!");
+            StartCoroutine(HitPlayerNow());
+        }
+
+        if(collision.tag == "SkelBossBullet")
+        {
+            if (playerHit == true || isPlayerDie == true) { return; }
+
+            monster = new SkelBoss();
+            playercurrentHp -= monster.MonsterDamage();
+
+            GFunc.Log("총알, 칼 공격 받았다!");
+            StartCoroutine(HitPlayerNow());
         }
 
     }
@@ -235,11 +304,9 @@ public class PlayerController : MonoBehaviour
 
         if (collision.tag == "FirstNoDown")
         {
-            GFunc.Log("첫 진입 중!");
             isIgnore = false;
 
         }
-
 
     }
 
@@ -262,5 +329,42 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(0.4f);
         isIgnore = false;
+    }
+
+    //! 공격을 받으면 2초간 무적이 되는 함수
+    IEnumerator HitPlayerNow()
+    {
+        playerHit = true;
+
+        int countTime = 0;
+        Color playerColor = playerImage.color;
+
+        while (countTime < 10)
+        {
+            if (countTime % 2 == 0)
+            {
+                playerColor.a = 90f / 255f;
+                playerImage.color = playerColor;
+
+            }
+            else
+            {
+                playerColor.a = 180f / 255f;
+
+                playerImage.color = playerColor;
+
+            }
+
+            yield return new WaitForSeconds(0.2f);
+
+            countTime++;
+        }
+
+        playerColor.a = 255f / 255f;
+
+        playerImage.color = playerColor;
+
+        GFunc.Log("무적 끔");
+        playerHit = false;
     }
 }

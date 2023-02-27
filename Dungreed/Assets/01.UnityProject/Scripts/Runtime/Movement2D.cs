@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Movement2D : MonoBehaviour
 {
@@ -39,6 +41,7 @@ public class Movement2D : MonoBehaviour
     private int currentJumpCnt = default;
 
 
+
     [SerializeField]
     private int maxDashCnt = default;
     private int currentDashCnt = default;
@@ -51,10 +54,20 @@ public class Movement2D : MonoBehaviour
     public int ChkdashImageCnt = default;
 
     public GameObject dashAttack = default;
+    public Image playerDashBar = default;
+    public float dashAmount = default;
 
+    public bool isPlayerDie = false;
+
+
+    public GameObject gameoverTown = default;
+    public Image gameoverBgImg = default;
+
+    public string sceneName = default;
 
     private void Awake()
     {
+        isPlayerDie = false;
         playerSpeed = 5f;
         jumpForce = 10f;
         isLongJump = false;
@@ -83,6 +96,11 @@ public class Movement2D : MonoBehaviour
         dashImageCnt = 12;
         dashGhostBgImage = new GameObject[dashImageCnt];
 
+        
+        sceneName = SceneManager.GetActiveScene().name;
+
+        GetDashComnent();
+
         GameObject gameObjs_ = GFunc.GetRootObj("GameObjs");
         GameObject etcSpawn_ = gameObjs_.FindChildObj("EtcSpawn");
 
@@ -110,11 +128,14 @@ public class Movement2D : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        PlayerDashGauge();
     }
 
     private void FixedUpdate()
     {
+
+        if(isPlayerDie == true) { return; }
+
         // 플레이어의 collider min, center, max 위치 정보
         Bounds bounds = playerCollider.bounds;
 
@@ -209,6 +230,83 @@ public class Movement2D : MonoBehaviour
 
     }   // OnDash()
 
+    //! 대쉬와 게임오버 오브젝트를 가져오는 함수
+    public void GetDashComnent()
+    {
+        GameObject uiObjs_ = GFunc.GetRootObj("UiObjs");
+        GameObject playerDashBack_ = uiObjs_.FindChildObj("PlayerDashBack");
+        GameObject dashBack2_ = playerDashBack_.FindChildObj("DashBack2");
+        GameObject playerDashBarObj_ = dashBack2_.FindChildObj("PlayerDashBar");
+
+        playerDashBar = playerDashBarObj_.GetComponentMust<Image>();
+
+        gameoverTown = uiObjs_.FindChildObj("GameOverTown");
+
+        GFunc.Log($"{sceneName}, {GData.SCENE_NAME_PLAY}");
+
+        if(sceneName == GData.SCENE_NAME_PLAY)
+        {
+            gameoverTown.transform.localScale = new Vector3(0.001f, 0.001f, 0.001f);
+
+            GameObject gameoverBgImgObj = gameoverTown.FindChildObj("GameoverBgImg");
+
+            gameoverBgImg = gameoverBgImgObj.GetComponentMust<Image>();
+        }
+        else
+        {
+            /* Do Nothing */
+        }
+    }
+
+
+    //! 실시간으로 대쉬 게이지를 알려주는 함수
+    public void PlayerDashGauge()
+    {
+        dashAmount = currentDashCnt / (float)maxDashCnt;
+        playerDashBar.fillAmount = dashAmount;
+    }
+
+    public void PlayerDieAct()
+    {
+        isPlayerDie = true;
+
+        animator.SetTrigger("isPlayerDie");
+        StartCoroutine(DieToTown());
+    }
+
+    public IEnumerator DieToTown()
+    {
+        yield return new WaitForSeconds(1f);
+
+        gameoverTown.transform.localScale = Vector3.one;
+
+        float countVal = 0;
+        int countTime = 0;
+
+        Color bgImg = gameoverBgImg.color;
+
+        while (countTime < 5)
+        {
+            bgImg.a = countVal / 255f;
+
+            gameoverBgImg.color = bgImg;
+
+            countVal += 45f;
+
+            yield return new WaitForSeconds(0.5f);
+
+            countTime++;
+
+        }
+
+        bgImg.a = 255f / 255f;
+        gameoverBgImg.color = bgImg;
+
+        yield return new WaitForSeconds(0.5f);
+
+        GFunc.LoadScene(GData.SCENE_NAME_TOWN);
+
+    }
 
     public IEnumerator DashAlpha()
     {

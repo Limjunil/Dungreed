@@ -8,50 +8,69 @@ using UnityEngine.UI;
 public class PlayerAttack : MonoBehaviour
 {
 
-    public GameObject swordNorbullet;
+    public GameObject swordNorbullet = default;
 
-    public GameObject[] swordAttacks;
+    public GameObject[] swordAttacks = default;
 
     public int swordCnt = default;
 
-    public Transform pos;
-    public float cooltime;
-    public bool isTurning = false;
+    public float cooltime = default;
 
-    private float curtime;
+    private float curtime = default;
 
     public bool isAttack = false;
 
-    public GameObject weaponPlayObjs = default;
-    public GameObject weaponPlay2Objs = default;
+    public GameObject swordWeaponPlayObjs = default;
+    public GameObject swordWeaponPlay2Objs = default;
 
 
-    GameObject damagePos;
+    public GameObject swordDamagePos = default;
 
 
-    GameObject playerObj;
+    public GameObject playerObj = default;
 
     public Canvas rotateSort = default;
+
+    // 무기를 변경했는지 확인하는 bool 값 | false : 검, true : 쇠뇌
+    public bool changeWeapon = false;
+
+    public GameObject swordWeaObj = default;
+    public GameObject bowWeaObj = default;
+
+
+    public GameObject arrowProfab = default;
+    public int arrowCount = default;
+    public GameObject bowDamagePos = default;
+    public GameObject[] bowAttack = default;
+
 
     // Start is called before the first frame update
     void Start()
     {
-       
+        curtime = 0f;
+        cooltime = 3f;
+        changeWeapon = false;
         rotateSort = gameObject.GetComponentMust<Canvas>();
 
         rotateSort.sortingLayerName = "Player";
 
         isAttack = false;
         swordCnt = 40;
-        damagePos = gameObject.FindChildObj("DamagePos");
-        weaponPlayObjs = gameObject.FindChildObj("WeaponPlay");
-        weaponPlay2Objs = gameObject.FindChildObj("WeaponPlay2");
-        weaponPlay2Objs.SetActive(false);
 
-        isTurning = false;
+        // 검
+        swordNorbullet = Resources.Load<GameObject>("Prefabs/SwordBasic");
+
+        swordWeaObj = gameObject.FindChildObj("SwordWea");
+        swordDamagePos = swordWeaObj.FindChildObj("DamagePos");
+        swordWeaponPlayObjs = swordWeaObj.FindChildObj("WeaponPlay");
+        swordWeaponPlay2Objs = swordWeaObj.FindChildObj("WeaponPlay2");
+        swordWeaponPlay2Objs.SetActive(false);
+
+
+        playerObj = gameObject.transform.parent.gameObject;
 
         GameObject gameObjs = GFunc.GetRootObj("GameObjs");
-        playerObj = gameObjs.FindChildObj("Player");
+
 
         swordAttacks = new GameObject[swordCnt];
 
@@ -64,6 +83,14 @@ public class PlayerAttack : MonoBehaviour
 
             swordAttacks[i].SetActive(false);
         }
+
+        // 쇠뇌
+        arrowProfab = Resources.Load<GameObject>("Prefabs/Arrow");
+
+        bowWeaObj = gameObject.FindChildObj("BowWea");
+        bowWeaObj.SetActive(false);
+        arrowCount = 40;
+        bowDamagePos = bowWeaObj.FindChildObj("DamagePos");
 
 
     }
@@ -98,7 +125,7 @@ public class PlayerAttack : MonoBehaviour
 
         }
 
-
+        GFunc.Log($"{curtime}");
 
         if (curtime <= 0)
         {
@@ -108,49 +135,64 @@ public class PlayerAttack : MonoBehaviour
                 if(isAttack == false)
                 {
                     isAttack = true;
-                    weaponPlay2Objs.SetActive(true);
-                    weaponPlayObjs.SetActive(false);
 
-                    rotateSort.sortingOrder = 3;
+                    if(changeWeapon == false)
+                    {
+                        // 검
+                        swordWeaponPlay2Objs.SetActive(true);
+                        swordWeaponPlayObjs.SetActive(false);
+
+                        rotateSort.sortingOrder = 3;
+                    }
+                    else
+                    {
+                        // 쇠뇌
+                        rotateSort.sortingOrder = 3;
+                    }
                 }
                 else
                 {
                     isAttack = false;
-                    weaponPlay2Objs.SetActive(false);
-                    weaponPlayObjs.SetActive(true);
-                    rotateSort.sortingOrder = 1;
+                    if (changeWeapon == false)
+                    {
+                        swordWeaponPlay2Objs.SetActive(false);
+                        swordWeaponPlayObjs.SetActive(true);
+                        rotateSort.sortingOrder = 1;
+                    }
+                    else
+                    {
+                        rotateSort.sortingOrder = 3;
+                    }
 
                 }
 
-                Vector3 bulletPos = damagePos.transform.position;
 
-                swordAttacks[swordCnt-1].SetActive(true);
-                swordAttacks[swordCnt-1].transform.position = bulletPos;
-
-                swordAttacks[swordCnt - 1].transform.rotation = transform.rotation;
-
-
-                swordAttacks[swordCnt - 1].transform.Rotate(new Vector3(0, 0, -90f));
-
-                //if (-1.5f < lookZ && lookZ < 1.5f)
-                //{
-                //    swordAttacks[swordCnt - 1].transform.Rotate(new Vector3(0, 0, -90f));
-                    
-                //}
-                //else
-                //{
-
-                //    swordAttacks[swordCnt - 1].transform.Rotate(new Vector3(0, 0, 90f));
-
-                //}
-
-                swordCnt--;
-
-
-
-                if (swordCnt == 1)
+                if(changeWeapon == false)
                 {
-                    swordCnt = 40;
+                    // 검
+                    Vector3 bulletPos = swordDamagePos.transform.position;
+
+                    swordAttacks[swordCnt - 1].SetActive(true);
+                    swordAttacks[swordCnt - 1].transform.position = bulletPos;
+
+                    swordAttacks[swordCnt - 1].transform.rotation = transform.rotation;
+
+
+                    swordAttacks[swordCnt - 1].transform.Rotate(new Vector3(0, 0, -90f));
+
+
+                    swordCnt--;
+
+
+
+                    if (swordCnt == 1)
+                    {
+                        swordCnt = 40;
+                    }
+                }
+                else
+                {
+
                 }
 
             }
@@ -158,7 +200,11 @@ public class PlayerAttack : MonoBehaviour
             curtime = cooltime;
         }
 
-        curtime -= Time.deltaTime;
+        else
+        {
+            curtime -= Time.deltaTime;
+        }
+
     }
 
 
