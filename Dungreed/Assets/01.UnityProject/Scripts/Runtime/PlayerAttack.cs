@@ -48,7 +48,7 @@ public class PlayerAttack : MonoBehaviour
     void Start()
     {
         curtime = 0f;
-        cooltime = 1f;
+        cooltime = 0.5f;
         changeWeapon = false;
         rotateSort = gameObject.GetComponentMust<Canvas>();
 
