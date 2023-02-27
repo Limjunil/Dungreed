@@ -22,6 +22,7 @@ TagManager:
   - NextDungLt
   - NextDungRt
   - NextDungBossIn
+  - Stele
   layers:
   - Default
   - TransparentFX

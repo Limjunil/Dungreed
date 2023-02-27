@@ -31,6 +31,8 @@ public class EnemyMoveController : MonoBehaviour
 
     protected bool enemyUpDown = false;
 
+    protected SteleControl steleControl = default;
+
 
     public virtual void RandomWay()
     {
@@ -199,6 +201,24 @@ public class EnemyMoveController : MonoBehaviour
         monsterhpBack.transform.localScale = new Vector3(0.001f, 0.001f, 0.001f);
 
         isDie = true;
+    }
+
+    //! steleControl 가져오는 함수
+    public virtual void GetSteleControl()
+    {
+        GameObject monsterObjs_ = gameObject.transform.parent.gameObject;
+
+        GameObject dungObjs_ = monsterObjs_.transform.parent.gameObject;
+
+        GameObject steleObjs_ = dungObjs_.FindChildObj("Stele");
+        steleControl = steleObjs_.GetComponentMust<SteleControl>();
+
+    }
+
+    //! 몬스터가 죽으면 steleControl 내부의 함수를 실행
+    public virtual void DieSendStele()
+    {
+        steleControl.MinusCount();
     }
 
 }

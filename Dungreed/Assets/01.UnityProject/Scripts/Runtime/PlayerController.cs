@@ -3,18 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-
+    
     private Movement2D movement2D = default;
     private bool isDash = false;
+    private Rigidbody2D playerRigid = default;
 
     public int playerLayer = default;
     public int groundBgLayer = default;
 
-
-    private Rigidbody2D playerRigid = default;
+    public Image playerHpBar = default;
+    public GameObject playerHpTxt = default;
+    public GameObject playerLevelTxt = default;
 
     public bool isIgnore = true;
 
@@ -22,11 +25,17 @@ public class PlayerController : MonoBehaviour
 
     public bool inBoss = false;
 
+    public int playerHpMax = default;
+    public int playercurrentHp = default;
+    public float playerAmount = default;
+
+    public int playerLevel = default;
+
     private void Awake()
     {
         inBoss = false;
         isDungeon = false;
-        isIgnore = true;
+        isIgnore = false;
         movement2D = gameObject.GetComponentMust<Movement2D>();
         isDash = false;
 
@@ -35,21 +44,29 @@ public class PlayerController : MonoBehaviour
 
         playerRigid = gameObject.GetComponentMust<Rigidbody2D>();
 
+
+        playerHpMax = 80;
+        playercurrentHp = playerHpMax;
+        playerLevel = 1;
+
+        GetPlayerHpComnent();
+
     }
 
     // Start is called before the first frame update
     void Start()
     {
-                
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        PlayerHpandLevelVal();
+
 
         //GFunc.Log($"{gameObject.transform.position} {gameObject.transform.localPosition}");
-        if(inBoss == true) 
+        if (inBoss == true) 
         {
             playerRigid.velocity = Vector3.zero;
             return; 
@@ -122,13 +139,35 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    IEnumerator StayDash()
-    {
-        
-        yield return new WaitForSeconds(0.5f);
-        isDash = false;
+    
 
-        GFunc.Log("tlfgod");
+    //! 플레이어의 Hp 오브젝트를 가져오는 함수
+    public void GetPlayerHpComnent()
+    {
+        GameObject uiObjs_ = GFunc.GetRootObj("UiObjs");
+        GameObject playerHpBack = uiObjs_.FindChildObj("PlayerHpBack");
+        GameObject hpBack2 = playerHpBack.FindChildObj("HpBack2");
+
+        GameObject playerHpBarObj = hpBack2.FindChildObj("PlayerHpBar");
+        playerHpTxt = playerHpBarObj.FindChildObj("PlayerHpTxt");
+
+        playerHpBar = playerHpBarObj.GetComponentMust<Image>();
+
+        GameObject playerLevelObj = hpBack2.FindChildObj("PlayerLevelUi");
+        playerLevelTxt = playerLevelObj.FindChildObj("PlayerLevelTxt");
+
+
+    }
+
+    //! 실시간으로 플레이어의 HP를 보여주는 함수
+    public void PlayerHpandLevelVal()
+    {
+        playerAmount = playercurrentHp / (float)playerHpMax;
+        playerHpBar.fillAmount = playerAmount;
+
+        playerHpTxt.SetTmpText($"{playercurrentHp} / {playerHpMax}");
+        playerLevelTxt.SetTmpText($"{playerLevel}");
+
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
@@ -204,7 +243,14 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    IEnumerator StayDash()
+    {
 
+        yield return new WaitForSeconds(0.5f);
+        isDash = false;
+
+        GFunc.Log("tlfgod");
+    }
 
     IEnumerator StartDungeon()
     {

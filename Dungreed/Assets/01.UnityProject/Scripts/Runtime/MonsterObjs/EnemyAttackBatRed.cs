@@ -26,7 +26,8 @@ public class EnemyAttackBatRed : CreateEnemyBullet
         GameObject batRed_ = gameObject.transform.parent.gameObject;
         enemyBatRed = batRed_.GetComponentMust<EnemyBatRed>();
 
-        dungObjs = batRed_.transform.parent.gameObject;
+        GameObject monsterObjs = batRed_.transform.parent.gameObject;
+        dungObjs = monsterObjs.transform.parent.gameObject;
 
         Vector3 BatBulletFirstPos = new Vector3(-1000f, 0f, 0f);
 

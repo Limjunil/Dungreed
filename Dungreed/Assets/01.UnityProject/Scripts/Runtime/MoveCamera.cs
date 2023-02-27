@@ -131,6 +131,16 @@ public class MoveCamera : MonoBehaviour
 
 
             case 6:
+                // 엔딩의 카메라 사이즈
+                center.x = 4f;
+                center.y = 3.3f;
+
+                size.x = 18f;
+                size.y = 10f;
+
+                break;
+
+            case 7:
                 // 마을의 카메라 사이즈
 
                 break;

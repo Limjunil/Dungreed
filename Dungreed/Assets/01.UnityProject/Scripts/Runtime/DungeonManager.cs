@@ -142,6 +142,20 @@ public class DungeonManager : MonoBehaviour
                     break;
             }
         }
+
+        if(dungNumber == 5)
+        {
+            switch (arrowDoor)
+            {
+
+                case "NextDungRt":
+                    nowDungRoom = 6;
+
+                    OnDungeon(nowDungRoom);
+
+                    break;
+            }
+        }
     }
 
 }

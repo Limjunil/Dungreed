@@ -41,6 +41,8 @@ public class EnemyBatRed : EnemyMoveController
 
 
         GetHpBarComonet();
+        GetSteleControl();
+
 
         Invoke("RandomWay", 1f);
     }
@@ -92,6 +94,8 @@ public class EnemyBatRed : EnemyMoveController
 
             if (enemyCurrentHp <= 0)
             {
+                DieSendStele();
+
                 MonsterDie();
             }
 

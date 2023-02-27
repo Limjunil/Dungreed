@@ -40,7 +40,7 @@ public class EnemySkelNorGreatSwd : EnemyMoveController
         attackSkelNor = rotateWeaSkel.GetComponentMust<EnemyAttackSkelNorGreatSwd>();
 
         GetHpBarComonet();
-
+        GetSteleControl();
 
         Invoke("RandomWay", 1f);
 
@@ -89,6 +89,7 @@ public class EnemySkelNorGreatSwd : EnemyMoveController
     }
 
 
+
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Sword")
@@ -98,6 +99,7 @@ public class EnemySkelNorGreatSwd : EnemyMoveController
 
             if(enemyCurrentHp <= 0)
             {
+                DieSendStele();
                 MonsterDie();
             }
 

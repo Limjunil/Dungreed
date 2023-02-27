@@ -53,6 +53,11 @@ public class CheckNextDungeon : MonoBehaviour
                 dungeonNumber = 5;
 
                 break;
+
+            case "06.DungeonEnd":
+                dungeonNumber = 6;
+
+                break;
         }
     }
 
