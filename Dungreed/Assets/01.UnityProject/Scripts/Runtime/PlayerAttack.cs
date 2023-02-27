@@ -48,7 +48,7 @@ public class PlayerAttack : MonoBehaviour
     void Start()
     {
         curtime = 0f;
-        cooltime = 3f;
+        cooltime = 1f;
         changeWeapon = false;
         rotateSort = gameObject.GetComponentMust<Canvas>();
 
@@ -97,7 +97,6 @@ public class PlayerAttack : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-
     {
 
         
@@ -194,18 +193,16 @@ public class PlayerAttack : MonoBehaviour
                 {
 
                 }
-
+                curtime = cooltime;
             }
 
-            curtime = cooltime;
         }
 
-        else
-        {
-            curtime -= Time.deltaTime;
-        }
 
-    }
+
+        curtime -= Time.deltaTime;
+
+    }   // Update()
 
 
 }
