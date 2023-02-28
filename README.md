@@ -29,3 +29,4 @@ Make a Dungreed game project
 2023-02-27 / v0.0.23 / Add PlayerUi Dash and subWea proto    
 2023-02-28 / v0.0.24 / End Player sub Weapon    
 2023-02-28 / v0.1.0 / Add Scene connection and Prototype game    
+2023-02-28 / v0.1.1 / Make Dungeon PassDoor and Title Bg Scrolling    

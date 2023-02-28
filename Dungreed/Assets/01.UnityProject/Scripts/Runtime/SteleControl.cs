@@ -33,8 +33,7 @@ public class SteleControl : MonoBehaviour
 
     public void MinusCount()
     {
-        GFunc.Log($"{ChkMosterVal}");
-
+        
         ChkMosterVal--;
 
         if(ChkMosterVal == 0)
@@ -48,7 +47,6 @@ public class SteleControl : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         steleAni.SetBool("ChkMonster", true);
-        GFunc.Log("참됨");
     }
 
     IEnumerator EndSteleAnime()

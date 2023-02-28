@@ -5,6 +5,7 @@ using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -23,6 +24,9 @@ public class PlayerController : MonoBehaviour
 
     public EnemyObjs monster = default;
 
+    public GameObject passDungUiObj = default;
+
+
     public bool isIgnore = true;
 
     public bool isDungeon = false;
@@ -39,8 +43,14 @@ public class PlayerController : MonoBehaviour
 
     public bool isPlayerDie = false;
 
+    public bool isMapUi = false;
+
+    public string nowSceneName = default;
+
+
     private void Awake()
     {
+        isMapUi = false;
         isPlayerDie = false;
         playerHit = false;
         inBoss = false;
@@ -61,6 +71,8 @@ public class PlayerController : MonoBehaviour
         playerImage = gameObject.GetComponentMust<Image>();
 
 
+        nowSceneName = SceneManager.GetActiveScene().name;
+
         GetPlayerHpComnent();
 
     }
@@ -77,11 +89,7 @@ public class PlayerController : MonoBehaviour
         PlayerHpandLevelVal();
         if (isPlayerDie == true) { return; }
 
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            //StartCoroutine(HitPlayerNow());
-            PlayerDie();
-        }
+        
         
         
         if (inBoss == true) 
@@ -155,6 +163,15 @@ public class PlayerController : MonoBehaviour
 
         }
 
+
+        if (isMapUi == true && Input.GetKeyDown(KeyCode.F))
+        {
+
+            passDungUiObj.transform.localScale = Vector3.one;
+
+
+        }
+
     }
 
     
@@ -174,6 +191,11 @@ public class PlayerController : MonoBehaviour
         GameObject playerLevelObj = hpBack2.FindChildObj("PlayerLevelUi");
         playerLevelTxt = playerLevelObj.FindChildObj("PlayerLevelTxt");
 
+
+        if (nowSceneName == GData.SCENE_NAME_TOWN) { return; }
+
+        passDungUiObj = uiObjs_.FindChildObj("PastDungUi");
+        passDungUiObj.transform.localScale = new Vector3(0.001f, 0.001f, 0.001f);
 
     }
 
@@ -232,7 +254,14 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        if(collision.tag == "SkelSword")
+        if(collision.tag == "PassDoor")
+        {
+            isMapUi = true;
+            GFunc.Log("플레이어가 문 근처에 왔다.");
+
+        }
+
+        if (collision.tag == "SkelSword")
         {
             if (playerHit == true || isPlayerDie == true) { return; }
 
@@ -274,7 +303,6 @@ public class PlayerController : MonoBehaviour
             monster = new SkelBoss();
             playercurrentHp -= monster.MonsterDamage();
 
-            GFunc.Log("총알, 칼 공격 받았다!");
             StartCoroutine(HitPlayerNow());
         }
 
@@ -284,7 +312,6 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.collider.CompareTag("Ground"))
         {
-            GFunc.Log("땅에 닿았다");
             isIgnore = true;
         }
     }
@@ -306,7 +333,6 @@ public class PlayerController : MonoBehaviour
             else
             {
                 isIgnore = false;
-                GFunc.Log("트리거에서 호출");
             }
         }
 
@@ -316,6 +342,19 @@ public class PlayerController : MonoBehaviour
 
         }
 
+        if (collision.tag == "PassDoor")
+        {
+            isMapUi = true;
+        }
+
+    }   // OnTriggerStay2D()
+
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "PassDoor")
+        {
+            isMapUi = false;
+        }
     }
 
     IEnumerator StayDash()
@@ -324,7 +363,6 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         isDash = false;
 
-        GFunc.Log("tlfgod");
     }
 
     IEnumerator StartDungeon()

@@ -242,7 +242,6 @@ public class Movement2D : MonoBehaviour
 
         gameoverTown = uiObjs_.FindChildObj("GameOverTown");
 
-        GFunc.Log($"{sceneName}, {GData.SCENE_NAME_PLAY}");
 
         if(sceneName == GData.SCENE_NAME_PLAY)
         {

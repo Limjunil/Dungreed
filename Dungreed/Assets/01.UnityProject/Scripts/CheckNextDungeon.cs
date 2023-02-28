@@ -9,9 +9,27 @@ public class CheckNextDungeon : MonoBehaviour
     public string dungeonArrowDoor = default;
     public int dungeonNumber = default;
 
+    public bool ChkInBossDoor = false;
+
     // Start is called before the first frame update
     void Start()
     {
+        SetChkDungeon();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (ChkInBossDoor == true && Input.GetKeyDown(KeyCode.F))
+        {
+            NextDung();
+        }
+    }
+
+    public void SetChkDungeon()
+    {
+        ChkInBossDoor = false;
+
         GameObject dungObjs_ = gameObject.transform.parent.gameObject;
 
         GameObject nowDungeon_ = dungObjs_.transform.parent.gameObject;
@@ -61,11 +79,6 @@ public class CheckNextDungeon : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void NextDung()
     {
@@ -81,7 +94,7 @@ public class CheckNextDungeon : MonoBehaviour
 
             if (dungeonArrowDoor == "NextDungBossIn")
             {
-                /* Do Nothing */
+                ChkInBossDoor = true;
             }
             else
             {
@@ -97,14 +110,19 @@ public class CheckNextDungeon : MonoBehaviour
 
             if (dungeonArrowDoor == "NextDungBossIn")
             {
-                if (Input.GetKeyDown(KeyCode.F))
-                {
-                    NextDung();
-                }
+                ChkInBossDoor = true;
             }
-            else
+        }
+    }
+
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+
+            if (dungeonArrowDoor == "NextDungBossIn")
             {
-                /* Do Nothing */
+                ChkInBossDoor = false;
             }
         }
     }

@@ -5920,7 +5920,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ede015c8bd2381d438dd427790878184, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mosterObjs: {fileID: 0}
+  monsterObjs: {fileID: 0}
   ChkMosterVal: 0
 --- !u!1001 &8075832496704816483
 PrefabInstance:
@@ -6223,11 +6223,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 444116152049967521, guid: 4b4aa2bf519105d46ae2fe513011d236, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.0000019073486
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 444116152049967521, guid: 4b4aa2bf519105d46ae2fe513011d236, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -1.6
       objectReference: {fileID: 0}
     - target: {fileID: 444116152049967521, guid: 4b4aa2bf519105d46ae2fe513011d236, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

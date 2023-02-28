@@ -44,6 +44,8 @@ public class PlayerAttack : MonoBehaviour
     public GameObject[] bowAttack = default;
     public Animator bowAni = default;
 
+    public GameObject[] weaponUi = default;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,6 +58,19 @@ public class PlayerAttack : MonoBehaviour
 
         isAttack = false;
         swordCnt = 40;
+
+        weaponUi = new GameObject[2];
+
+        GameObject uiObjs_ = GFunc.GetRootObj("UiObjs");
+        GameObject weaponSwapUi = uiObjs_.FindChildObj("WeaponSwapUi");
+        GameObject weaBgImgObj = weaponSwapUi.FindChildObj("WeaBgImg1");
+
+        weaponUi[0] = weaBgImgObj.FindChildObj("WeaponSwdImg");
+        weaponUi[1] = weaBgImgObj.FindChildObj("WeaponBowImg");
+
+        weaponUi[0].SetActive(true);
+        weaponUi[1].SetActive(false);
+
 
         // 검
         swordNorbullet = Resources.Load<GameObject>("Prefabs/SwordBasic");
@@ -120,6 +135,9 @@ public class PlayerAttack : MonoBehaviour
             changeWeapon = true;
             swordWeaObj.SetActive(false);
             bowWeaObj.SetActive(true);
+
+            weaponUi[0].SetActive(false);
+            weaponUi[1].SetActive(true);
         }
         else if ( 0 < Input.GetAxis("Mouse ScrollWheel"))
         {
@@ -127,6 +145,9 @@ public class PlayerAttack : MonoBehaviour
             changeWeapon = false;
             swordWeaObj.SetActive(true);
             bowWeaObj.SetActive(false);
+
+            weaponUi[0].SetActive(true);
+            weaponUi[1].SetActive(false);
 
         }
 

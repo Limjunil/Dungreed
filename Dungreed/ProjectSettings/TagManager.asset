@@ -23,6 +23,7 @@ TagManager:
   - NextDungRt
   - NextDungBossIn
   - Stele
+  - PassDoor
   layers:
   - Default
   - TransparentFX

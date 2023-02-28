@@ -150,7 +150,7 @@ public class SkelBossController : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Sword")
+        if(collision.tag == "Sword" || collision.tag == "DashAttack")
         {
             enemyCurrentHp -= 8;
 
@@ -196,7 +196,7 @@ public class SkelBossController : MonoBehaviour
                     break;
             }
 
-            yield return new WaitForSeconds(10f);
+            yield return new WaitForSeconds(9f);
         }
     }
 }

@@ -13,7 +13,7 @@ public class ArrowMove : MonoBehaviour
     {
         arrowRigid = gameObject.GetComponentMust<Rigidbody2D>();
 
-        arrowSpeed = 5f;
+        arrowSpeed = 8f;
 
         arrowRigid.velocity = transform.up * arrowSpeed;
     }

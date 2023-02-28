@@ -24,8 +24,7 @@ public class DungeonManager : MonoBehaviour
         nowDungRoom = 0;
 
         GameObject gameObjs_ = GFunc.GetRootObj("GameObjs");
-        GameObject camera_ = gameObjs_.FindChildObj("Main Camera");
-        dungeonCamera = camera_.GetComponentMust<MoveCamera>();
+        dungeonCamera = Camera.main.gameObject.GetComponentMust<MoveCamera>();
         playerObjs = gameObjs_.FindChildObj("Player");
 
         Vector3 mapPos = Vector3.zero;
@@ -158,4 +157,65 @@ public class DungeonManager : MonoBehaviour
         }
     }
 
+
+    public void PassNextDungeon(int passDungNumber)
+    {
+        for(int i = 0; i < dungeonMaps.Length; i++)
+        {
+            dungeonMaps[i].SetActive(false);
+
+        }
+
+        switch (passDungNumber)
+        {
+            case 0:
+                nowDungRoom = 0;
+
+                OnDungeon(nowDungRoom);
+
+                PlayPosToPassPos(nowDungRoom);
+
+                break;
+
+            case 1:
+                nowDungRoom = 1;
+
+                OnDungeon(nowDungRoom);
+
+                PlayPosToPassPos(nowDungRoom);
+
+                break;
+
+            case 2:
+                nowDungRoom = 2;
+
+                OnDungeon(nowDungRoom);
+
+                PlayPosToPassPos(nowDungRoom);
+
+                break;
+
+            case 3:
+                nowDungRoom = 3;
+
+                OnDungeon(nowDungRoom);
+
+                PlayPosToPassPos(nowDungRoom);
+
+                break;
+        }
+
+
+
+    }   // PassNextDungeon()
+
+
+    public void PlayPosToPassPos(int nowDungRoom)
+    {
+        GameObject dungObj_ = dungeonMaps[nowDungRoom].FindChildObj("DungObjs");
+        GameObject wormPass = dungObj_.FindChildObj("WormPass");
+
+
+        playerObjs.transform.localPosition = wormPass.transform.localPosition;
+    }
 }

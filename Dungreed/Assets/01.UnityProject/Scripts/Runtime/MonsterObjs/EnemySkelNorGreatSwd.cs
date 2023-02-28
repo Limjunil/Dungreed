@@ -92,7 +92,7 @@ public class EnemySkelNorGreatSwd : EnemyMoveController
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Sword")
+        if(collision.tag == "Sword" || collision.tag == "DashAttack")
         {
             monsterhpBack.transform.localScale = Vector3.one;
             enemyCurrentHp -= 8;
