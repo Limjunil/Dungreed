@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static UnityEngine.GraphicsBuffer;
 
 public class MoveCamera : MonoBehaviour
@@ -18,6 +19,8 @@ public class MoveCamera : MonoBehaviour
     private float cameraHeight = default;
     private float cameraWidth = default;
 
+    public string nowScene = default;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +31,14 @@ public class MoveCamera : MonoBehaviour
 
         cameraHeight = Camera.main.orthographicSize;
         cameraWidth = cameraHeight * Screen.width / Screen.height;
+
+        nowScene = SceneManager.GetActiveScene().name;
+
+        if (nowScene == GData.SCENE_NAME_TOWN)
+        {
+            SetCameraRange(7);
+
+        }
     }
 
     private void OnDrawGizmos()
@@ -141,6 +152,12 @@ public class MoveCamera : MonoBehaviour
 
             case 7:
                 // 마을의 카메라 사이즈
+                center.x = 0f;
+                center.y = 3f;
+
+                size.x = 78f;
+                size.y = 20f;
+
 
                 break;
         }

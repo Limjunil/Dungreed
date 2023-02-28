@@ -146,7 +146,7 @@ public class Movement2D : MonoBehaviour
         isGroundOne = Physics2D.OverlapCircle(playerFootPos, 0.1f, groundLayer);
         isGroundTwo = Physics2D.OverlapCircle(playerFootPos, 0.1f, groundBgLayer);
 
-        if(isGroundOne == true || isGroundTwo == true)
+        if (isGroundOne == true || isGroundTwo == true)
         {
             isGround = true;
             animator.SetBool("Ground", true);
@@ -154,6 +154,7 @@ public class Movement2D : MonoBehaviour
         else
         {
             isGround = false;
+
         }
 
 
@@ -167,11 +168,13 @@ public class Movement2D : MonoBehaviour
         if (isLongJump == true && 0 < playerRigid.velocity.y)
         {
             playerRigid.gravityScale = 1.0f;
+
         }
 
         else
         {
             playerRigid.gravityScale = 2.5f;
+
         }
     }
 
@@ -214,6 +217,8 @@ public class Movement2D : MonoBehaviour
     {
         if (0 < currentDashCnt)
         {
+            animator.SetBool("Ground", false);
+
             dashAttack.SetActive(true);
             Vector2 len = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
             // 길이이자 방향이다.
@@ -391,6 +396,24 @@ public class Movement2D : MonoBehaviour
             {
                 dashGhostBgImage[i].SetActive(false);
             }
+        }
+    }
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Ground") ||
+            collision.collider.CompareTag("GroundBg"))
+        {
+            animator.SetBool("Ground", true);
+
+        }
+    }
+    public void OnCollisionExit2D(Collision2D collision)
+    {
+        if(collision.collider.CompareTag("Ground") ||
+            collision.collider.CompareTag("GroundBg"))
+        {
+            animator.SetBool("Ground", false);
+
         }
     }
 }

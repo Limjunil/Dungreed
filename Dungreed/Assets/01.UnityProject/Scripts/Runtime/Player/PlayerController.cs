@@ -87,6 +87,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         PlayerHpandLevelVal();
+
         if (isPlayerDie == true) { return; }
 
         
