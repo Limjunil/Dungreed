@@ -21,15 +21,9 @@ public class Btn_Action : MonoBehaviour
     //! 게임을 시작하는 함수
     public void OnPlayClick()
     {
-        // 마을 씬 불러오기 + 추후 슬롯 만들고 바꿀 예정
+        // 마을 씬 불러오기
         GFunc.LoadScene(GData.SCENE_NAME_TOWN);
     }   // OnPlayClick()
-
-    //! 설정으로 들어가는 함수
-    public void OnSettingClick()
-    {
-
-    }   // OnSettingClick()
 
     //! 게임을 나가는 함수
     public void OnExitClick()

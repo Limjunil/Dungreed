@@ -208,7 +208,6 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.collider.CompareTag("Ground"))
         {
-            GFunc.Log("땅에 닿았다");
             isIgnore = true;
         }
     }
@@ -279,6 +278,15 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(HitPlayerNow());
         }
 
+    }
+
+    public void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Ground"))
+        {
+            GFunc.Log("땅에 닿았다");
+            isIgnore = true;
+        }
     }
 
     public void OnTriggerStay2D(Collider2D collision)
