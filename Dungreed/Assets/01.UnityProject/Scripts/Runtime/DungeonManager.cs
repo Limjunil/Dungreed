@@ -14,10 +14,16 @@ public class DungeonManager : MonoBehaviour
 
     public int nowDungRoom = default;
 
+    public PlayerController playerController = default;
 
     // Start is called before the first frame update
     void Start()
     {
+
+        GameObject gameObj_ = GFunc.GetRootObj("GameObjs");
+
+        playerController = gameObj_.FindChildObj("Player").GetComponentMust<PlayerController>();
+
         dungeonMapPrefab = Resources.LoadAll<GameObject>("Prefabs/MapStage1/");
         dungeonMaps = new GameObject[dungeonMapPrefab.Length];
 
@@ -216,6 +222,8 @@ public class DungeonManager : MonoBehaviour
         GameObject wormPass = dungObj_.FindChildObj("WormPass");
 
 
-        playerObjs.transform.localPosition = wormPass.transform.localPosition;
+        playerObjs.transform.localPosition = wormPass.transform.position;
+
+        playerController.OffPlzIgnore();
     }
 }

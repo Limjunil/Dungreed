@@ -11,9 +11,12 @@ public class CheckNextDungeon : MonoBehaviour
 
     public bool ChkInBossDoor = false;
 
+    
+
     // Start is called before the first frame update
     void Start()
     {
+        
         SetChkDungeon();
     }
 

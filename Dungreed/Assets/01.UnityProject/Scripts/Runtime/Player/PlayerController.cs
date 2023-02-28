@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     public GameObject passDungUiObj = default;
 
 
-    public bool isIgnore = true;
+    public bool isIgnore = false;
 
     public bool isDungeon = false;
 
@@ -86,6 +86,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        GFunc.Log($"{isIgnore}");
         PlayerHpandLevelVal();
 
         if (isPlayerDie == true) { return; }
@@ -225,7 +227,10 @@ public class PlayerController : MonoBehaviour
 
     }
     
-
+    public void OffPlzIgnore()
+    {
+        StartCoroutine(OnIsIgnore());
+    }
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
@@ -251,6 +256,8 @@ public class PlayerController : MonoBehaviour
 
         if (collision.tag == "FirstNoDown")
         {
+
+            GFunc.Log("11");
             isIgnore = false;
 
         }
@@ -339,6 +346,8 @@ public class PlayerController : MonoBehaviour
 
         if (collision.tag == "FirstNoDown")
         {
+            GFunc.Log("111");
+
             isIgnore = false;
 
         }
@@ -356,6 +365,7 @@ public class PlayerController : MonoBehaviour
         {
             isMapUi = false;
         }
+
     }
 
     IEnumerator StayDash()
