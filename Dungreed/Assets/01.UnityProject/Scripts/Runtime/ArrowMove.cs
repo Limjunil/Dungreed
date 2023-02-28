@@ -61,7 +61,7 @@ public class ArrowMove : MonoBehaviour
     {
         arrowRigid.velocity = Vector2.zero;
 
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(0.3f);
 
         gameObject.SetActive(false);
     }

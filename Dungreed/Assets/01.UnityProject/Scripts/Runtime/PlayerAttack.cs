@@ -42,7 +42,7 @@ public class PlayerAttack : MonoBehaviour
     public int arrowCount = default;
     public GameObject bowDamagePos = default;
     public GameObject[] bowAttack = default;
-
+    public Animator bowAni = default;
 
     // Start is called before the first frame update
     void Start()
@@ -84,22 +84,52 @@ public class PlayerAttack : MonoBehaviour
             swordAttacks[i].SetActive(false);
         }
 
+        swordWeaObj.SetActive(true);
+
+
         // 쇠뇌
         arrowProfab = Resources.Load<GameObject>("Prefabs/Arrow");
+        arrowCount = 40;
+        bowAttack = new GameObject[arrowCount];
 
         bowWeaObj = gameObject.FindChildObj("BowWea");
-        bowWeaObj.SetActive(false);
-        arrowCount = 40;
         bowDamagePos = bowWeaObj.FindChildObj("DamagePos");
 
+        GameObject bowObj_ = bowWeaObj.FindChildObj("BowWea");
+        bowAni = bowObj_.GetComponentMust<Animator>();
+
+        for (int i = 0; i < bowAttack.Length; i++)
+        {
+            bowAttack[i] = Instantiate(arrowProfab, saveBullet_,
+                Quaternion.identity, gameObjs.transform);
+
+            bowAttack[i].SetActive(false);
+        }
+
+
+        bowWeaObj.SetActive(false);
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetAxis("Mouse ScrollWheel") < 0)
+        {
+            // 마우스 휠 아래로 | 쇠뇌
+            changeWeapon = true;
+            swordWeaObj.SetActive(false);
+            bowWeaObj.SetActive(true);
+        }
+        else if ( 0 < Input.GetAxis("Mouse ScrollWheel"))
+        {
+            // 마우스 휠 위로 | 검
+            changeWeapon = false;
+            swordWeaObj.SetActive(true);
+            bowWeaObj.SetActive(false);
 
-        
+        }
+
         Vector2 len = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
 
         float lookZ = Mathf.Atan2(len.y, len.x);
@@ -124,7 +154,6 @@ public class PlayerAttack : MonoBehaviour
 
         }
 
-        GFunc.Log($"{curtime}");
 
         if (curtime <= 0)
         {
@@ -177,7 +206,7 @@ public class PlayerAttack : MonoBehaviour
                     swordAttacks[swordCnt - 1].transform.rotation = transform.rotation;
 
 
-                    swordAttacks[swordCnt - 1].transform.Rotate(new Vector3(0, 0, -90f));
+                    swordAttacks[swordCnt - 1].transform.Rotate(new Vector3(0f, 0f, -90f));
 
 
                     swordCnt--;
@@ -191,6 +220,8 @@ public class PlayerAttack : MonoBehaviour
                 }
                 else
                 {
+                    // 쇠뇌
+                    StartCoroutine(AttackBow());
 
                 }
                 curtime = cooltime;
@@ -204,5 +235,31 @@ public class PlayerAttack : MonoBehaviour
 
     }   // Update()
 
+
+    IEnumerator AttackBow()
+    {
+        // 쇠뇌
+
+        bowAni.SetTrigger("BowAttack");
+
+        yield return new WaitForSeconds(0.5f);
+
+        Vector3 bulletPos = bowDamagePos.transform.position;
+
+        bowAttack[arrowCount - 1].SetActive(true);
+        bowAttack[arrowCount - 1].transform.position = bulletPos;
+
+        bowAttack[arrowCount - 1].transform.rotation = transform.rotation;
+
+        bowAttack[arrowCount - 1].transform.Rotate(new Vector3(0f, 0f, -90f));
+
+        arrowCount--;
+
+
+        if (arrowCount == 1)
+        {
+            arrowCount = 0;
+        }
+    }
 
 }

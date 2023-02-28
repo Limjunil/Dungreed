@@ -27,5 +27,4 @@ Make a Dungreed game project
 2023-02-26 / v0.0.21 / Add Dungeon Map move    
 2023-02-27 / v0.0.22 / Add Dungeon End Map and PlayerUi Hp and Level proto    
 2023-02-27 / v0.0.23 / Add PlayerUi Dash and subWea proto    
-
-
+2023-02-28 / v0.0.24 / End Player sub Weapon    
