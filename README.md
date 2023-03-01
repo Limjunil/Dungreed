@@ -32,3 +32,4 @@ Make a Dungreed game project
 2023-02-28 / v0.1.1 / Make Dungeon PassDoor and Title Bg Scrolling    
 2023-02-28 / v0.1.2 / Add Town Objects and Player Ani fix    
 2023-02-28 / v0.1.3 / Error fix    
+2023-02-28 / v0.1.4 / Add Npc Talk and Player EXP    

@@ -38,6 +38,11 @@ public class PlayerController : MonoBehaviour
     public float playerAmount = default;
 
     public int playerLevel = default;
+    public int playerExp = default;
+
+    public int playerMaxExp = default;
+
+
 
     public bool playerHit = false;
 
@@ -68,6 +73,8 @@ public class PlayerController : MonoBehaviour
         playerHpMax = 40;
         playercurrentHp = playerHpMax;
         playerLevel = 1;
+        playerExp = 0;
+        playerMaxExp = 10;
         playerImage = gameObject.GetComponentMust<Image>();
 
 
@@ -87,7 +94,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        GFunc.Log($"{isIgnore}");
+        ChkPlayerLevel();
         PlayerHpandLevelVal();
 
         if (isPlayerDie == true) { return; }
@@ -177,6 +184,19 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    //! 플레이어 레벨을 갱신하는 함수
+    public void ChkPlayerLevel()
+    {
+        if(playerMaxExp <= playerExp)
+        {
+            playerLevel++;
+            playerExp -= playerMaxExp;
+
+            playerMaxExp += 10;
+        }
+
+
+    }
     
 
     //! 플레이어의 Hp 오브젝트를 가져오는 함수

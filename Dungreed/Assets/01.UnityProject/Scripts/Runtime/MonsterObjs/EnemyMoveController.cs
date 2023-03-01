@@ -7,7 +7,8 @@ using UnityEngine.UI;
 
 public class EnemyMoveController : MonoBehaviour
 {
-
+    protected EnemyObjs enemyObjs = default;
+    protected PlayerController playerController = default;
     protected int enemyMaxHp = default;
     protected int enemyCurrentHp = default;
     protected float enemyAmount = default;
@@ -33,6 +34,18 @@ public class EnemyMoveController : MonoBehaviour
 
     protected SteleControl steleControl = default;
 
+    public virtual void GetPlayerController()
+    {
+        GameObject gameObjs_ = GFunc.GetRootObj("GameObjs");
+
+        playerController = gameObjs_.FindChildObj("Player").GetComponentMust<PlayerController>();
+    }
+
+    //! 죽으면 플레이어에게 경험치 값을 보내는 함수
+    public virtual void SendPlayerExp()
+    {
+        playerController.playerExp += enemyObjs.MonsterExp();
+    }
 
     public virtual void RandomWay()
     {

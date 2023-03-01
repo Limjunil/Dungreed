@@ -6,7 +6,6 @@ using UnityEngine;
 public class EnemySkelNorGreatSwd : EnemyMoveController
 {
 
-    public EnemyObjs enemyObjs = default;
     public Animator skelAnimator = default;
 
     public MonsterCollider monsterCollider = default;
@@ -41,6 +40,7 @@ public class EnemySkelNorGreatSwd : EnemyMoveController
 
         GetHpBarComonet();
         GetSteleControl();
+        GetPlayerController();
 
         Invoke("RandomWay", 1f);
 
@@ -62,6 +62,15 @@ public class EnemySkelNorGreatSwd : EnemyMoveController
 
     }
 
+    public override void GetPlayerController()
+    {
+        base.GetPlayerController();
+    }
+
+    public override void SendPlayerExp()
+    {
+        base.SendPlayerExp();
+    }
 
     public override void RandomWay()
     {
@@ -127,7 +136,7 @@ public class EnemySkelNorGreatSwd : EnemyMoveController
 
         monsterCollider.SkelDie(true, 1f);
 
-
+        SendPlayerExp();
         StartCoroutine(OffSkelNor());
     }
 

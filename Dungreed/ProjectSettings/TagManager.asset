@@ -24,6 +24,7 @@ TagManager:
   - NextDungBossIn
   - Stele
   - PassDoor
+  - Npc
   layers:
   - Default
   - TransparentFX

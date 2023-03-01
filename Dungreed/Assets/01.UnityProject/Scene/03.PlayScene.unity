@@ -172,6 +172,7 @@ MonoBehaviour:
   dungeonMaps: []
   playerObjs: {fileID: 0}
   nowDungRoom: 0
+  playerController: {fileID: 0}
 --- !u!1 &140713575
 GameObject:
   m_ObjectHideFlags: 0
@@ -538,6 +539,7 @@ MonoBehaviour:
   center: {x: 4, y: 3.3}
   size: {x: 18, y: 10}
   cameraHeight: 0
+  nowScene: 
 --- !u!1 &570685752
 GameObject:
   m_ObjectHideFlags: 0
@@ -972,11 +974,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2506627683222340878, guid: db09984cc252d6546ae069c315fe943d, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 290
       objectReference: {fileID: 0}
     - target: {fileID: 2506627683222340878, guid: db09984cc252d6546ae069c315fe943d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -28
       objectReference: {fileID: 0}
     - target: {fileID: 2506627683222340878, guid: db09984cc252d6546ae069c315fe943d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

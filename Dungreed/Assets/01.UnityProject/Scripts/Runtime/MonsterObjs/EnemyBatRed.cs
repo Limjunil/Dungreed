@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class EnemyBatRed : EnemyMoveController
 {
-    public EnemyObjs enemyObjs = default;
     public GameObject dieBatRedImage = default;
     public Image batRedImage = default;
     public EnemyAttackBatRed attackBatRed = default;
@@ -42,7 +41,7 @@ public class EnemyBatRed : EnemyMoveController
 
         GetHpBarComonet();
         GetSteleControl();
-
+        GetPlayerController();
 
         Invoke("RandomWay", 1f);
     }
@@ -58,6 +57,15 @@ public class EnemyBatRed : EnemyMoveController
         MonsterHpVal();
 
         OnMoveEnemy();
+    }
+    public override void GetPlayerController()
+    {
+        base.GetPlayerController();
+    }
+
+    public override void SendPlayerExp()
+    {
+        base.SendPlayerExp();
     }
 
     public override void RandomWay()
@@ -132,6 +140,7 @@ public class EnemyBatRed : EnemyMoveController
         dieBatRedImage.SetActive(true);
         attackBatRed.OnBatRedDie();
         enemyRigid.gravityScale = 1f;
+        SendPlayerExp();
 
         StartCoroutine(OffBatRed());
     }

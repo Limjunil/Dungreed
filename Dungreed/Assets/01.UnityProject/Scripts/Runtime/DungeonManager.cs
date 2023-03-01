@@ -179,7 +179,7 @@ public class DungeonManager : MonoBehaviour
 
                 OnDungeon(nowDungRoom);
 
-                PlayPosToPassPos(nowDungRoom);
+                playerObjs.transform.localPosition = new Vector3(264f, 0f, 0f);
 
                 break;
 
@@ -188,7 +188,7 @@ public class DungeonManager : MonoBehaviour
 
                 OnDungeon(nowDungRoom);
 
-                PlayPosToPassPos(nowDungRoom);
+                playerObjs.transform.localPosition = new Vector3(-20f, -20f, 0f);
 
                 break;
 
@@ -197,7 +197,7 @@ public class DungeonManager : MonoBehaviour
 
                 OnDungeon(nowDungRoom);
 
-                PlayPosToPassPos(nowDungRoom);
+                playerObjs.transform.localPosition = new Vector3(928f, -388f, 0f);
 
                 break;
 
@@ -206,24 +206,14 @@ public class DungeonManager : MonoBehaviour
 
                 OnDungeon(nowDungRoom);
 
-                PlayPosToPassPos(nowDungRoom);
+                playerObjs.transform.localPosition = new Vector3(290f, -28f, 0f);
 
                 break;
         }
 
 
-
+        playerController.OffPlzIgnore();
     }   // PassNextDungeon()
 
 
-    public void PlayPosToPassPos(int nowDungRoom)
-    {
-        GameObject dungObj_ = dungeonMaps[nowDungRoom].FindChildObj("DungObjs");
-        GameObject wormPass = dungObj_.FindChildObj("WormPass");
-
-
-        playerObjs.transform.localPosition = wormPass.transform.position;
-
-        playerController.OffPlzIgnore();
-    }
 }
