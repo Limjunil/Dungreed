@@ -13,8 +13,7 @@ public class SkelBossBullet : MonoBehaviour
     void Start()
     {
         skelBossBulletRigid = gameObject.GetComponentMust<Rigidbody2D>();
-        bulletSpeed = 5f;
-        
+        bulletSpeed = 5f;        
     }
 
     void OnEnable()

@@ -35,3 +35,4 @@ Make a Dungreed game project
 2023-03-01 / v0.1.4 / Add Npc Talk and Player EXP    
 2023-03-01 / v0.2.0 / Add Audio and End Game project    
 2023-03-01 / v0.2.1 / Error Fix    
+2023-03-01 / v0.2.2 / Error Code Fix    
