@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 5893992270357816216}
   - component: {fileID: 5893992270357816217}
   - component: {fileID: 5893992270357816218}
-  - component: {fileID: 5893992270357816219}
   - component: {fileID: 8038097730096001137}
+  - component: {fileID: 4029915561789382882}
   m_Layer: 5
   m_Name: SkelBossBullet
   m_TagString: SkelBossBullet
@@ -100,19 +100,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &5893992270357816219
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5893992270357816215}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0d7ecbdc779d4e4a819d4536204eaa6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletSpeed: 0
 --- !u!58 &8038097730096001137
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -129,3 +116,16 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 36
+--- !u!114 &4029915561789382882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5893992270357816215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0d7ecbdc779d4e4a819d4536204eaa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSpeed: 0

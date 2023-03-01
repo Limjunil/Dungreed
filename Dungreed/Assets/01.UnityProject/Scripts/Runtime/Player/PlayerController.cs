@@ -136,8 +136,6 @@ public class PlayerController : MonoBehaviour
         {
             isIgnore = true;
             isDash = true;
-            playerAudio.clip = playerAudioClips[1];
-            playerAudio.Play();
 
             movement2D.OnDash();
             StartCoroutine(OnIsIgnore());
@@ -253,6 +251,12 @@ public class PlayerController : MonoBehaviour
             PlayerDie();
         }
 
+    }
+    //! 대쉬 효과음
+    public void PlayAudioDash()
+    {
+        playerAudio.clip = playerAudioClips[1];
+        playerAudio.Play();
     }
 
     //! 검 공격 효과음

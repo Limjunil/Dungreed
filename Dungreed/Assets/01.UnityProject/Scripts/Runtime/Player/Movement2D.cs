@@ -33,6 +33,8 @@ public class Movement2D : MonoBehaviour
     private bool isGroundTwo = false;
     private Vector3 playerFootPos;  // 플레이어 발 위치
 
+    private PlayerController playerController = default;
+
 
     [SerializeField]
     // 최대 점프 횟수
@@ -84,6 +86,7 @@ public class Movement2D : MonoBehaviour
         animator = gameObject.GetComponentMust<Animator>();
 
         playerCollider = gameObject.GetComponent<BoxCollider2D>();
+        playerController = gameObject.GetComponentMust<PlayerController>();
 
         isGroundOne = false;
         isGroundTwo = false;
@@ -217,6 +220,8 @@ public class Movement2D : MonoBehaviour
     {
         if (0 < currentDashCnt)
         {
+            playerController.PlayAudioDash();
+
             animator.SetBool("Ground", false);
 
             dashAttack.SetActive(true);
