@@ -89,12 +89,7 @@ public class SkelBossController : MonoBehaviour
 
         if(isLaserOne == true)
         {
-            int randomVal = Random.Range(-1, 1 + 1);
-
-            if(0 <= randomVal)
-            {
-                StartCoroutine(LaserPatternTwo());
-            }
+            StartCoroutine(LaserPatternTwo());
 
             isLaserOne = false;
 

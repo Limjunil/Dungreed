@@ -85,7 +85,7 @@ class SkelBoss : EnemyObjs
     public SkelBoss()
     {
         this.monsterName = "SkelBoss";
-        this.monsterHp = 100;
+        this.monsterHp = 150;
         this.monsterDamage = 8;
         this.monsterLaserDamage = 10;
         this.monsterExp = 50;

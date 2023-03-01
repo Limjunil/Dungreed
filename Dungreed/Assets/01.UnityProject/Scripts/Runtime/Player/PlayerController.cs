@@ -109,10 +109,11 @@ public class PlayerController : MonoBehaviour
         PlayerHpandLevelVal();
 
         if (isPlayerDie == true) { return; }
+        PlayerDieChk();
 
-        
-        
-        
+
+
+
         if (inBoss == true) 
         {
             playerRigid.velocity = Vector3.zero;
@@ -245,12 +246,15 @@ public class PlayerController : MonoBehaviour
         playerHpTxt.SetTmpText($"{playercurrentHp} / {playerHpMax}");
         playerLevelTxt.SetTmpText($"{playerLevel}");
 
-        if(playercurrentHp <= 0)
+    }
+
+    public void PlayerDieChk()
+    {
+        if (playercurrentHp <= 0)
         {
             // 플레이어 사망 시 시작할 함수
             PlayerDie();
         }
-
     }
     //! 대쉬 효과음
     public void PlayAudioDash()
@@ -397,13 +401,6 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (collision.tag == "FirstNoDown")
-        {
-            GFunc.Log("111");
-
-            isIgnore = false;
-
-        }
 
         if (collision.tag == "PassDoor")
         {

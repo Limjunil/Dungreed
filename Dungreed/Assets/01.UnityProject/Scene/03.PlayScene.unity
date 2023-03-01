@@ -173,6 +173,7 @@ MonoBehaviour:
   playerObjs: {fileID: 0}
   nowDungRoom: 0
   playerController: {fileID: 0}
+  playerAttack: {fileID: 0}
 --- !u!1 &140713575
 GameObject:
   m_ObjectHideFlags: 0

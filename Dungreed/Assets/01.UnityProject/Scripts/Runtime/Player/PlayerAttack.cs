@@ -263,6 +263,16 @@ public class PlayerAttack : MonoBehaviour
     }   // Update()
 
 
+    public void AllOffBulletObjs()
+    {
+        for(int i = 0; i < swordAttacks.Length; i++)
+        {
+            swordAttacks[i].SetActive(false);
+            bowAttack[i].SetActive(false);
+        }
+
+    }
+
     IEnumerator AttackBow()
     {
         // 쇠뇌

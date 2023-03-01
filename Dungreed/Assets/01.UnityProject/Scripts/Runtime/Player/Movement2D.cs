@@ -267,6 +267,14 @@ public class Movement2D : MonoBehaviour
         }
     }
 
+    //! 만들어진 대쉬 잔상을 전부 꺼버리는 함수
+    public void AllOffDashAlpha()
+    {
+        for (int i = 0; i < dashGhostBgImage.Length; i++)
+        {
+            dashGhostBgImage[i].SetActive(false);
+        }
+    }
 
     //! 실시간으로 대쉬 게이지를 알려주는 함수
     public void PlayerDashGauge()
@@ -285,14 +293,15 @@ public class Movement2D : MonoBehaviour
 
     public IEnumerator DieToTown()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.8f);
 
         gameoverTown.transform.localScale = Vector3.one;
+
+        Color bgImg = gameoverBgImg.color;
 
         float countVal = 0;
         int countTime = 0;
 
-        Color bgImg = gameoverBgImg.color;
 
         while (countTime < 5)
         {

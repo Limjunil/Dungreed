@@ -15,6 +15,9 @@ public class DungeonManager : MonoBehaviour
     public int nowDungRoom = default;
 
     public PlayerController playerController = default;
+    public PlayerAttack playerAttack = default;
+    public Movement2D movement2D = default;
+
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +26,8 @@ public class DungeonManager : MonoBehaviour
         GameObject gameObj_ = GFunc.GetRootObj("GameObjs");
 
         playerController = gameObj_.FindChildObj("Player").GetComponentMust<PlayerController>();
+        movement2D = gameObj_.FindChildObj("Player").GetComponentMust<Movement2D>();
+        playerAttack = gameObj_.FindChildObj("Player").FindChildObj("RotateWea").GetComponentMust<PlayerAttack>();
 
         dungeonMapPrefab = Resources.LoadAll<GameObject>("Prefabs/MapStage1/");
         dungeonMaps = new GameObject[dungeonMapPrefab.Length];
@@ -58,7 +63,7 @@ public class DungeonManager : MonoBehaviour
         dungeonCamera.SetCameraRange(dungNumer);
         playerObjs.transform.localPosition = Vector3.zero;
         dungeonMaps[dungNumer].SetActive(true);
-    }
+    }   // OnDungeon()
 
     public void NextDungeon(int dungNumber, string arrowDoor)
     {
@@ -161,7 +166,10 @@ public class DungeonManager : MonoBehaviour
                     break;
             }
         }
-    }
+        movement2D.AllOffDashAlpha();
+        playerAttack.AllOffBulletObjs();
+
+    }   // NextDungeon()
 
 
     public void PassNextDungeon(int passDungNumber)
@@ -211,7 +219,9 @@ public class DungeonManager : MonoBehaviour
                 break;
         }
 
+        movement2D.AllOffDashAlpha();
 
+        playerAttack.AllOffBulletObjs();
         playerController.OffPlzIgnore();
     }   // PassNextDungeon()
 

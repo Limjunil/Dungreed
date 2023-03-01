@@ -14,6 +14,10 @@ public class DashAlphaImage : MonoBehaviour
     {
         StartCoroutine(OffDashAlpha());
     }
+    private void OnDisable()
+    {
+        gameObject.SetActive(false);
+    }
 
     // Update is called once per frame
     void Update()

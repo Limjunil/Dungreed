@@ -22,12 +22,7 @@ public class ArrowMove : MonoBehaviour
         StartCoroutine("StartAutoOffArrow");
 
     }
-
-    private void OnDisable()
-    {
-        gameObject.SetActive(false);
-    }
-
+    
     // Update is called once per frame
     void Update()
     {
