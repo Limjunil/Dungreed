@@ -42,7 +42,7 @@ public class TitleObjScroll : MonoBehaviour
             GameObject cloudCanves_ = GFunc.GetRootObj("CloudCanves");
             targetPos = cloudCanves_.FindChildObj("MidCloud2").transform.localPosition;
 
-            scrollRange = -480f;
+            scrollRange = -600f;
             moveSpeed = 6f;
         }
 

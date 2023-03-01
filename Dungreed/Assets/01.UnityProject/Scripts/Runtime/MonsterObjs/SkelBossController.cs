@@ -27,6 +27,7 @@ public class SkelBossController : MonoBehaviour
     public bool isDieSkelBoss = false;
     public bool isFirstPattern = false;
 
+    public BgAudioManager bgAudioManager = default;
 
     public EnemyObjs enemyObjs = default;
 
@@ -47,6 +48,7 @@ public class SkelBossController : MonoBehaviour
         GameObject skelBossBack_ = gameObject.FindChildObj("SkelBossBack");
         GameObject skelBossBullets_ = gameObject.FindChildObj("SkelBossBullets");
         GameObject skelBossSword_ = gameObject.FindChildObj("SkelBossSwds");
+        bgAudioManager = GFunc.GetRootObj("BgAudioManager").GetComponentMust<BgAudioManager>();
 
 
 
@@ -78,17 +80,7 @@ public class SkelBossController : MonoBehaviour
 
         if (isFirstPattern == false)
         {
-
-            ////레이저 패턴 시작
-            //skelBossLtHandMove.StartLaser();
-
-            //// 탄환 탄막 패턴 시작
-            //skelBossBullet.OnStartBulletPattern();
-
-
-            //// 소드 패턴 시작
-            //skelBossSwd.OnSkelSwdPattern();
-
+           
             StartCoroutine(SkelBossPattern());
 
             isFirstPattern = true;
@@ -156,12 +148,12 @@ public class SkelBossController : MonoBehaviour
 
             if (enemyCurrentHp <= 0)
             {
-                MonsterBossDie();
+                StartCoroutine(MonsterBossDie());
             }
         }
     }
 
-    public void MonsterBossDie()
+    IEnumerator MonsterBossDie()
     {
         // 보스 처치시 발생
 
@@ -170,6 +162,11 @@ public class SkelBossController : MonoBehaviour
         monsterhpBack.transform.localScale = new Vector3(0.001f, 0.001f, 0.001f);
 
         skelBossAni.SetTrigger("DieSkelBoss");
+
+        yield return new WaitForSeconds(0.5f);
+
+        bgAudioManager.ChangeBgSoundBoss();
+
 
     }
 

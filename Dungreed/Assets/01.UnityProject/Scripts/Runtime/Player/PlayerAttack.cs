@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class PlayerAttack : MonoBehaviour
 {
+    private PlayerController playerController = default;
 
     public GameObject swordNorbullet = default;
 
@@ -61,6 +62,9 @@ public class PlayerAttack : MonoBehaviour
 
         weaponUi = new GameObject[2];
 
+
+        playerController = gameObject.transform.parent.gameObject.GetComponentMust<PlayerController>();
+        
         GameObject uiObjs_ = GFunc.GetRootObj("UiObjs");
         GameObject weaponSwapUi = uiObjs_.FindChildObj("WeaponSwapUi");
         GameObject weaBgImgObj = weaponSwapUi.FindChildObj("WeaBgImg1");
@@ -219,6 +223,8 @@ public class PlayerAttack : MonoBehaviour
                 if(changeWeapon == false)
                 {
                     // 검
+                    playerController.PlayAudioSword();
+
                     Vector3 bulletPos = swordDamagePos.transform.position;
 
                     swordAttacks[swordCnt - 1].SetActive(true);
@@ -264,6 +270,9 @@ public class PlayerAttack : MonoBehaviour
         bowAni.SetTrigger("BowAttack");
 
         yield return new WaitForSeconds(0.5f);
+
+
+        playerController.PlayAudioBow();
 
         Vector3 bulletPos = bowDamagePos.transform.position;
 

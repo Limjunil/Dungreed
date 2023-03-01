@@ -158,7 +158,6 @@ public class NpcTalking : MonoBehaviour
     {
         if(collision.tag == "Player")
         {
-            GFunc.Log("플레이어 확인");
             isTalking = true;
         }
     }
@@ -167,8 +166,6 @@ public class NpcTalking : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            GFunc.Log("플레이어 계속 확인");
-
             isTalking = true;
         }
     }
@@ -177,8 +174,6 @@ public class NpcTalking : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            GFunc.Log("플레이어 나감");
-
             isTalking = false;
         }
     }

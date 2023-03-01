@@ -8,6 +8,8 @@ public class CheckPlayerBoss : MonoBehaviour
     private GameObject SkelBoss = default;
     private GameObject skelBossHp = default;
 
+    public BgAudioManager bgAudioManager = default;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +29,8 @@ public class CheckPlayerBoss : MonoBehaviour
 
         SkelBoss = dungObjs.FindChildObj("SkelBoss");
         SkelBoss.SetActive(false);
+
+        bgAudioManager = GFunc.GetRootObj("BgAudioManager").GetComponentMust<BgAudioManager>();
     }
 
     // Update is called once per frame
@@ -47,6 +51,8 @@ public class CheckPlayerBoss : MonoBehaviour
 
     IEnumerator GoSkelBossPlay()
     {
+        bgAudioManager.ChangeBgSoundBoss();
+
         yield return new WaitForSeconds(1f);
 
         SkelBoss.SetActive(true);

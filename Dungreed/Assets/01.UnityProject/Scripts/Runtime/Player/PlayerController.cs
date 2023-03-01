@@ -26,6 +26,10 @@ public class PlayerController : MonoBehaviour
 
     public GameObject passDungUiObj = default;
 
+    // 플레이어가 쓸 오디오를 전부 넣을 배열
+    public AudioClip[] playerAudioClips = default;
+    // 현재 재생할 오디오
+    public AudioSource playerAudio = default;
 
     public bool isIgnore = false;
 
@@ -80,6 +84,13 @@ public class PlayerController : MonoBehaviour
 
         nowSceneName = SceneManager.GetActiveScene().name;
 
+
+        playerAudioClips = Resources.LoadAll<AudioClip>("Sound/PlayerSound");
+        playerAudio = gameObject.GetComponentMust<AudioSource>();
+
+        playerAudio.loop = false;
+        playerAudio.playOnAwake = false;
+
         GetPlayerHpComnent();
 
     }
@@ -125,6 +136,9 @@ public class PlayerController : MonoBehaviour
         {
             isIgnore = true;
             isDash = true;
+            playerAudio.clip = playerAudioClips[1];
+            playerAudio.Play();
+
             movement2D.OnDash();
             StartCoroutine(OnIsIgnore());
             StartCoroutine(StayDash());
@@ -143,6 +157,8 @@ public class PlayerController : MonoBehaviour
             else
             {
                 movement2D.OnJump();
+                playerAudio.clip = playerAudioClips[0];
+                playerAudio.Play();
 
             }
 
@@ -239,7 +255,20 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    
+    //! 검 공격 효과음
+    public void PlayAudioSword()
+    {
+        playerAudio.clip = playerAudioClips[2];
+        playerAudio.Play();
+    }
+
+    //! 쇠뇌 공격 효과음
+    public void PlayAudioBow()
+    {
+        playerAudio.clip = playerAudioClips[3];
+        playerAudio.Play();
+    }
+
     public void PlayerDie()
     {
         isPlayerDie = true;

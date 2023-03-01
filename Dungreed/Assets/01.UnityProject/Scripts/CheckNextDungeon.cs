@@ -85,7 +85,7 @@ public class CheckNextDungeon : MonoBehaviour
 
     public void NextDung()
     {
-        GFunc.Log($"{dungeonNumber}, {dungeonArrowDoor}");
+        
         dungeonManager.NextDungeon(dungeonNumber, dungeonArrowDoor);
         
     }
