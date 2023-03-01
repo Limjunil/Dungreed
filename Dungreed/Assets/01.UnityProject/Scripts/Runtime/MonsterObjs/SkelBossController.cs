@@ -160,7 +160,7 @@ public class SkelBossController : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-        bgAudioManager.ChangeBgSoundBoss();
+        bgAudioManager.EndBossBgSound();
 
 
     }
