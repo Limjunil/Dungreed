@@ -19,6 +19,16 @@ public class TitleObjScroll : MonoBehaviour
         if(gameObject.name == "BackCloud1" ||
            gameObject.name == "BackCloud2")
         {
+            if(gameObject.name == "BackCloud1")
+            {
+                gameObject.transform.localPosition = new Vector3(870f, 0f, 0f);
+            }
+            else
+            {
+                gameObject.transform.localPosition = new Vector3(3530f, 0f, 0f);
+
+            }
+
             GameObject cloudCanves_ = GFunc.GetRootObj("CloudCanves");
             targetPos = cloudCanves_.FindChildObj("BackCloud2").transform.localPosition;
 
@@ -29,6 +39,16 @@ public class TitleObjScroll : MonoBehaviour
         if(gameObject.name == "FrontCloud1" || 
             gameObject.name == "FrontCloud2")
         {
+            if (gameObject.name == "FrontCloud1")
+            {
+                gameObject.transform.localPosition = new Vector3(727f, 0f, 0f);
+            }
+            else
+            {
+                gameObject.transform.localPosition = new Vector3(3117f, 0f, 0f);
+
+            }
+
             GameObject cloudCanves_ = GFunc.GetRootObj("CloudCanves");
             targetPos = cloudCanves_.FindChildObj("FrontCloud2").transform.localPosition;
 
@@ -39,6 +59,16 @@ public class TitleObjScroll : MonoBehaviour
         if (gameObject.name == "MidCloud1" ||
             gameObject.name == "MidCloud2")
         {
+            if (gameObject.name == "MidCloud1")
+            {
+                gameObject.transform.localPosition = new Vector3(355f, 0f, 0f);
+            }
+            else
+            {
+                gameObject.transform.localPosition = new Vector3(1071f, 0f, 0f);
+
+            }
+
             GameObject cloudCanves_ = GFunc.GetRootObj("CloudCanves");
             targetPos = cloudCanves_.FindChildObj("MidCloud2").transform.localPosition;
 

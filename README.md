@@ -38,3 +38,4 @@ Make a Dungreed game project
 2023-03-01 / v0.2.2 / Error Code Fix    
 2023-03-01 / v0.2.3 / Error Audio option and Boss pattern Fix    
 2023-03-01 / v0.2.4 / Add Quit game and code fix    
+2023-03-01 / v0.2.5 / Cloud Pos Error fix and Final    
