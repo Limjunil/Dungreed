@@ -43,6 +43,13 @@ public class SteleControl : MonoBehaviour
 
         }
     }
+
+    public void EndStele()
+    {
+        StartCoroutine(EndSteleAnime());
+
+    }
+
     IEnumerator StartSteleAnime()
     {
         yield return new WaitForSeconds(1f);
@@ -60,11 +67,6 @@ public class SteleControl : MonoBehaviour
 
     }
 
-    public void EndStele()
-    {
-        StartCoroutine(EndSteleAnime());
-
-    }
 
     public void AllOffStele()
     {

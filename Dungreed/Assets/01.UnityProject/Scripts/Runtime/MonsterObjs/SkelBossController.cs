@@ -17,6 +17,7 @@ public class SkelBossController : MonoBehaviour
     private GameObject skelBossDead = default;
     private Animator skelBossAni = default;
     private BoxCollider2D skelBossHeadCollider = default;
+    
 
 
     public float enemyAmount = default;
@@ -30,6 +31,8 @@ public class SkelBossController : MonoBehaviour
     public BgAudioManager bgAudioManager = default;
 
     public EnemyObjs enemyObjs = default;
+
+    public SteleControl stele2Control = default;
 
     // Start is called before the first frame update
     void Start()
@@ -50,6 +53,9 @@ public class SkelBossController : MonoBehaviour
         GameObject skelBossSword_ = gameObject.FindChildObj("SkelBossSwds");
         bgAudioManager = GFunc.GetRootObj("BgAudioManager").GetComponentMust<BgAudioManager>();
 
+
+        GameObject dungObjs_ = gameObject.transform.parent.gameObject;
+        stele2Control = dungObjs_.FindChildObj("Stele2").GetComponentMust<SteleControl>();
 
 
         skelBossBullet = skelBossBullets_.GetComponentMust<SkelBossBulletPattern>();
@@ -160,6 +166,7 @@ public class SkelBossController : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
+        stele2Control.EndStele();
         bgAudioManager.EndBossBgSound();
 
 

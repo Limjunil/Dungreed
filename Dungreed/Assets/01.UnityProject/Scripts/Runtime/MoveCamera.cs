@@ -126,7 +126,7 @@ public class MoveCamera : MonoBehaviour
                 center.y = 2f;
 
                 size.x = 28f;
-                size.y = 9f;
+                size.y = 10f;
 
                 break;
 
