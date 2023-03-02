@@ -40,3 +40,4 @@ Make a Dungreed game project
 2023-03-01 / v0.2.4 / Add Quit game and code fix    
 2023-03-01 / v0.2.5 / Cloud Pos Error fix and Final    
 2023-03-02 / v0.2.6 / Fix DungMap04 Camera Pos and Add Boss Room Stele Final    
+2023-03-02 / v0.2.8 / Fix Tag Number    
